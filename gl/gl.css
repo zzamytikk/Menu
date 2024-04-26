@@ -1,0 +1,68 @@
+:root {
+      
+}
+
+.tema4-2 {/* Синий тёмный */
+  --Ct: #ccc;/* color */
+  --bg: #012;/* background */
+  --B-C: #59f;/* button */
+}
+.tema8 {
+  
+}
+.tema9 {/* чёрная (tema8 светлая в https://zam.usite.pro/css/z.css) */
+  --Ct: #fff;/* color */
+  --bg: #000;/* background */
+  --B-C: #59f;/* button */
+}
+
+html {
+  font-size: 12pt
+}
+body {
+  margin:0;
+  color:var(--Ct);
+  background: var(--bg);
+  transition: background .7s, color 1s
+}
+
+header {z-index: 8;
+  position: fixed;
+  top:0;
+  width:100%;
+  height:1.5rem;
+  background: var(--bg);
+  overflow-x: auto
+}
+#M {/* Кнопки перед меню */
+  position: relative;
+  padding: 0 3px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+main {
+  margin:1.7em 7px 7px 7px;
+}
+
+[bclick] {
+  border:0;
+  color:var(--B-C);
+  background: #0000;
+}
+
+select {
+  font-size: 1rem;
+}
+
+.bodyS {/* Добавим полосу прокрутки */
+  overflow: scroll;
+  padding-bottom: 1700px;
+}
+    
+nav {/* Меню */
+  position: fixed;
+  top:1.5rem;
+  bottom:0;
+  background: red;
+}
