@@ -15,20 +15,55 @@
   <script src="https://zam.usite.pro/js/z.js" defer></script>
   
   <!-- Для шаблона www (Для всех шаблонов): -->
-  <link !href="https://zam.usite.pro/db/all/Git/gl/gl.css" rel="stylesheet">
-  <script !src="https://zam.usite.pro/db/all/Git/gl/gl.js" defer></script>
+  <link href="https://zam.usite.pro/db/all/Git/gl/gl.css" rel="stylesheet">
+  <script src="https://zam.usite.pro/db/all/Git/gl/gl.js" defer></script>
   <!-- Для шаблона localhost: -->
-  <link href="/gl/gl.css" rel="stylesheet">
-  <script src="/gl/gl.js" defer></script>
+  <link !href="/gl/gl.css" rel="stylesheet">
+  <script !src="/gl/gl.js" defer></script>
 
   <!-- Измени путь на свой проект: -->
-  <link href="/menu/1-0-0/ok.css" rel="stylesheet">
-  <script src="/menu/1-0-0/ok.js" defer></script>
+  <link href="/zMenu/1-0-0/ok.css" rel="stylesheet">
+  <script src="/zMenu/1-0-0/ok.js" defer></script>
 </head>
 <body>
   <header><nav></nav></header>
+  <style>
+    .menuBac {
+      background: #f0f;
+    }
+    .menuBac > div {
+      background: #ff08;
+    }
+     .menuBac a {
+      background: #b0b8;
+    }
+    
+    .menuA > div > a:not(:nth-child(1), :nth-child(2)) {
+      display: none;
+    }
+  </style>
   <main>
-    <nav id="zMenu"></nav>
+    <nav class="zMenu">
+      <div>
+        <a href="">Главная</a>
+        <a href="">Новости</a>
+        <a href="">Каталог</a>
+        <a href="">Файлы судьбы</a>
+        <a href="">Елабуга</a>
+        <a href="">Чпокальная</a>
+        <a href="">Форум</a>
+      </div>
+      <button class="B-Ix-M"><p><s></s><s></s></p></button>
+    </nav>
+
+    <h4 class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Кнопки</b></h4>
+    <button id="BmenuX">Меню мобил</button>
+    <button id="BmenuBack">background</button>
+    <button id="BmenuA">A</button>
+    <h4 class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Размеры:</b></h4>
+    width:
+     <br>&#8195;• nav: <span id="wNaw">...</span>
+     <br>&#8195;• div: <span id="wDiv">...</span>
   </main>
   <footer></footer>
 
@@ -41,6 +76,36 @@
     document.addEventListener('DOMContentLoaded', () => {
       gl.$();//Запуск инструментов (bg,resize,menu...)
       z.z.Start.$();
+      zMenu.$();//★ Меню
+      
+      let m={
+        w: () => {//Смотрим размеры
+          let O=zMenu;
+          
+          O.f.w();//(Меню не помещается горизонтально)
+          $('#wNaw').html($(O.id).width());
+          $('#wDiv').html($(O.id + '>div').width());
+        },
+        bac: () => {//
+          
+        }
+      };
+      
+      $('#BmenuX').on('click', () => {//mobil
+        $('.zMenu').toggleClass('zMenuX');//Добавим удалим class
+        m.w();//Смотрим размеры
+      });
+      m.w();//Смотрим размеры
+      
+      $('#BmenuBack').on('click', () => { //background
+        $('.zMenu').toggleClass('menuBac'); //Добавим удалим class
+      });
+      $('.zMenu').addClass('menuBac');
+      
+      $('#BmenuA').on('click', () => { //background
+        $('.zMenu').toggleClass('menuA'); //Добавим удалим class
+        m.w();//Смотрим размеры
+      });
       
       setTimeout(() => {//Загрузка сайта
         e.style.width=0;
