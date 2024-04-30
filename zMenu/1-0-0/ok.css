@@ -18,7 +18,7 @@
 
 /* ✦ Меню ✦ *//* #region */
     /* ✦✦ ! ✦✦ *//* #region */
-.zMenu {z-index: 8;
+.zMenu {z-index: 9;
   height: 1.5rem;
   font-size: 1rem;
   overflow: hidden;
@@ -150,3 +150,22 @@
         /* ✦✦✦ ✘ .B-Ix-X ✦✦✦ *//* #endregion */        
     /* ✦✦ .B-Ix- ☰ ✘ ✦✦ *//* #endregion */
 /* ✦ a, button icon ☰ ✘ ✦ *//* #endregion */
+
+/* ✦ .Obg Задний фон ✦ *//* #region */
+.Obg {z-index: 8; opacity: 0;
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: #0006;
+    animation: a-Obg .5s ease-out forwards;
+    transition: height .3s;
+}
+@keyframes a-Obg {
+    to {
+        /* width: 100% */
+        opacity: 1;
+    }
+}
+/* ✦ .Obg Задний фон ✦ *//* #endregion */
