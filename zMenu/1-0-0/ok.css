@@ -34,13 +34,9 @@
   background: var(--bg);
 }
 
-.zMenu a {
-  margin: 0 3px;
-}
 .zMenu button {
   display: none;
   float: right;
-  height: 100%;
 }
     /* ✦✦ ! ✦✦ *//* #endregion */
 
@@ -59,46 +55,34 @@
 }
 
 .zMenuX button {
-  display: block;
+  display: inline-flex;
 }
     /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #endregion */
 /* ✦ Меню ✦ *//* #endregion */
 
-
-
-button, a {/* Отталкиваемся от body font: 14px sans-serif; */
-
-    /* + Можно добавить для корекции
-
-        display: flex;
-    */
-    display: inline-flex;
-    ---but-C: var(--B-C);/* color b */
-    ---but-C-bg: var(--B-C);/* (icon background .B-I p) */
-    ---but-C-b-sh: var(--B-C);/* (icon box-shadow .B-I p) */
-    font: inherit;
-    color: var(---but-C);
-    background: var(--C-);
-    cursor: pointer;
-    text-decoration: unset;
-    transition: .3s;
+/* ✦ a, button icon ☰ ✘ ✦ *//* #region */
+    /* ✦✦ ! ✦✦ *//* #region */
+.zMenu :is(button, a) {/* Отталкиваемся от body font: 14px sans-serif; */
+  --B-C: #59f;/* Цвет */
+  margin: 0 3px;
+  font: inherit;
+  color: var(--B-C);
+  background: #0000;
+  cursor: pointer;
+  text-decoration: unset;
+  transition: .3s;
+}
+    /* ✦✦ ! ✦✦ *//* #endregion */
+    
+    /* ✦✦ .B-Ix- ☰ ✘ ✦✦ *//* #region */
+        /* ✦✦✦ ! p,s ✦✦✦ *//* #region */
+.zMenu [class*="B-Ix"] {
+  font-size: 1.5rem;
+  height: 1em;
+  padding-left: 1em
 }
 
-
-
-
-/* 🢃🢃🢃 icon button .B-I-.. 🢃🢃🢃 *//* #region */
-    /* ⮟⮟⮟ ! .B-I(x) ⮟⮟⮟ *//* #region */
-        /* 🠗🠗🠗 ! 🠗🠗🠗 *//* #region */
-[class*="B-I"] {
-    height: 1em;
-    padding-left: 1em
-}
-        /* 🠕🠕🠕 ! 🠕🠕🠕 *//* #endregion */
-
-        /* 🠗🠗🠗 p s иконки 🠗🠗🠗 *//* #region */
-            /* ▿▿▿ p ▿▿▿ *//* #region */
-[class*="B-I"] p { /* icon */
+.zMenu [class*="B-Ix"] p { /* icon */
     position: absolute;
     left: 0;
     top: 0;
@@ -107,114 +91,62 @@ button, a {/* Отталкиваемся от body font: 14px sans-serif; */
     display: flex;/* Центруем */
     justify-content: center;
     align-items: center;
-    font: inherit;/* от p font-size: var(---med-B-12-14-16); */
+    font: inherit;
 }
-            /* ▵▵▵ p ▵▵▵ *//* #endregion */
 
-            /* ▿▿▿ s ▿▿▿ *//* #region */
-[class*="B-I"] s {
+.zMenu [class*="B-Ix"] s {
     transform: translate(0, 0);/* Для корекции отображения */
 }
-/*  + Для перемещения используем (top|left):.5em;
-! Не исползавать transform: translate(-10%, -50%); для перемещения !
-    + Поворот для всех .B-Ix-.. s {transform: translate(-50%, -50%) rotate(45deg);}
-}
-*/
-
-[class*="B-I"] s::before,
-[class*="B-I"] s::after {
+.zMenu [class*="B-Ix"] s::before,
+.zMenu [class*="B-Ix"] s::after {
     content: '';
     position: absolute;
     top: 0; left: 0;/* Для transition: .7s */
     width: .8em;
     height: 2px;/* Для уменьшения толщины добавить border: 0; || border-width: 0 1px 0 0;(Оставить 1 стенку) */
-    border: 1px solid var(---but-C-bg);
-    background: var(---but-C-bg);
+    border: 0;
+    background: var(--B-C);
     transform: translate(-50%, -50%);/* коректируем */
-    /* animation: B-A-p 1s ease-in-out; *//*! Нагружает */
     transition: .7s,/* для красивой смены кнопок .B-Ix-M ☰ => ✘ .B-Ix-X */
-        var(--trans),/* Для смены диза */
         background .5s, border-color .5s; /* для плавной смены цвета при наведении мышкой */
 }
-@keyframes B-A-p {
-    0% {
-        width: 80%;/* Убераем дёрганье при первой загрузке B-A-M */
-        transform: translate(-50%, -50%) rotate(90deg);
-    }
-}
-            /* ▵▵▵ s ▵▵▵ *//* #endregion */
-        /* 🠕🠕🠕 p s иконки 🠕🠕🠕 *//* #endregion */
-
-        /* 🠗🠗🠗 b 🠗🠗🠗 *//* #region */
-[class*="B-I"] > b {/* Текст */
-    top: 1px;
-    display: block;
-    margin: 0 4px 0 2px;
-    height: 100%;
-    font-size: .727em;
-    font-size: .7em;
-    text-align: left;
-}
-        /* 🠕🠕🠕 b 🠕🠕🠕 *//* #endregion */
-    /* ⮝⮝⮝ ! .B-I(x) ⮝⮝⮝ *//* #endregion */
-
-    /* ⮟⮟⮟ B-I(x)-.. иконки ✔ ✘ ☰ (Новости, Глобус ..) ⮟⮟⮟ *//* #region */
-/*+ Тонкая линия: (Полезно для проверки точности или когда нужна тонкая линия)
-        height: 1px;
-        border: 0;
-❤
-*/
-        /* 🠗🠗🠗 ! 🠗🠗🠗 *//* #region */
-/*+ .B-Ix-.. Удаляет в последней s ::before
-    ПРосто:
-    border-top-left-radius: 500%;
-    border-top-right-radius: 500%;
-    border-bottom-left-radius: 500%;
-    border-bottom-right-radius: 500%;
-*/
-[class*="B-Ix"] s:last-child::before {/* Удаляем в последней s::before */
+.zMenu [class*="B-Ix"] s:last-child::before {/* Удаляем в последней s::before */
     content: unset;
 }
-        /* 🠕🠕🠕 ! 🠕🠕🠕 *//* #endregion */
-
-
-
-
-        /* 🠗🠗🠗 M ☰ 🠗🠗🠗 *//* #region */
-
-        /** Заменяется => ✘ .B-Ix-X (Для анимации) */
-
-.B-Ix-M s::before {
+        /* ✦✦✦ ! p,s ✦✦✦ *//* #endregion */
+        
+        /* ✦✦✦ ☰ .B-Ix-M ✦✦✦ *//* #region */
+/** Заменяется => ✘ .B-Ix-X (Для анимации) */
+.zMenu .B-Ix-M s::before {
     top: -.3em;
 }
-.B-Ix-M s::after {
+.zMenu .B-Ix-M s::after {
     top: .3em;
 }
-.B-Ix-M s:nth-child(2)::after {
+.zMenu .B-Ix-M s:nth-child(2)::after {
     top: 0;
 }
-        /* 🠕🠕🠕 M ☰ 🠕🠕🠕 *//* #endregion */
-
-        /* 🠗🠗🠗 ✘ (Закрыть/Плохо) До 🠗🠗🠗 *//* #region */
-            /* ▿▿▿ ! ▿▿▿ *//* #region */
-:is([class*="B-Ix-X"], [class*="B-I-X"]) p {/* красный */
-    ---but-C-bg: #f66;
+        /* ✦✦✦ ☰ .B-Ix-M ✦✦✦ *//* #endregion */
+        
+        /* ✦✦✦ ✘ .B-Ix-X ✦✦✦ *//* #region */
+.zMenu [class*="B-Ix-X"] p {/* красный */
+    --B-C: #f66;
 }
-            /* ▵▵▵ ! ▵▵▵ *//* #endregion */
 
-            /* ▿▿▿ X ▿▿▿ *//* #region */
-            /** Заменяется => .B-Ix-M (Для анимации) */
-:is(.B-I-X, .B-Ix-X) s::before {/* .B-I-X Для просто кнопки X без анимации на ☰ */
+/** Заменяется => .B-Ix-M (Для анимации) */
+.zMenu .B-Ix-X s::before {/* .B-I-X Для просто кнопки X без анимации на ☰ */
     transform: translate(-50%, -50%) rotate(45deg)
 }
-:is(.B-I-X, .B-Ix-X) s::after {
+.zMenu .B-Ix-X s::after {
     transform: translate(-50%, -50%) rotate(-45deg)
 }
-.B-Ix-X s:nth-child(2)::after {/* Для анимации переключения на ☰ */
+.zMenu .B-Ix-X s:nth-child(2)::after {/* Для анимации переключения на ☰ */
     opacity: 0;
     left: 1em;
     width: 0;/* Уберём нажатие за пределами button */
     height: 0;
     border: 0;
 }
-            /* ▵▵▵ X ▵▵▵ *//* #endregion */
+        /* ✦✦✦ ✘ .B-Ix-X ✦✦✦ *//* #endregion */        
+    /* ✦✦ .B-Ix- ☰ ✘ ✦✦ *//* #endregion */
+/* ✦ a, button icon ☰ ✘ ✦ *//* #endregion */
