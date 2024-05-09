@@ -5,22 +5,63 @@
 var zMenu = {//Меню
   id:'.zMenu',//<nav class меню
   //zMenu.$();//★ Меню
-  $:q => {//Запуск
+  $:() => {//Запуск
     let O=zMenu;
     
-    $(O.id+' button').on('click', () => O.X(O));
+    $(O.id+'>button').on('click', () => O.X(O));
     
-    if(O.f.w()){//Меню не помещается! Делаем мобильную версию
-      $(O.id).addClass('zMenuX');
+    O.pro(O, 1);//Стандарт/Мобильное проверка
+  },
+  /* zMenu.pro(//Стандарт/Мобильное
+       zMenu,//Сократим путь
+       1     //Первый запуск (Загрузка страницы)
+     );
+  */
+  //T:0,//setTimeout
+  pro: (O, x) => {
+    clearTimeout(this.T);
+
+    let e=$(O.id),//nav
+      D=e.children('div'),//div
+      b=e.children('button');
+      
+    if(x){//Первый запуск
+      O.f.oko(() => { //Отслеживаем изменения размера браузер окна
+        O.pro(O);//Стандарт/Мобильное
+      });
+    }else{//Изменили размер экрана (Браузер)
+      e.removeClass('zMenuX');//nav Вернём нормальное меню
+      D.removeAttr('style');//div Спрячим список меню
+      b.removeAttr('style')//button Вернём кнопку меню как загрузку
+        .addClass('B-L').attr('disabled','');
+
+      if(O.x){//Мобильное меню открыто
+        //console.debug(O.x, 'Закроем мобильное меню');
+        O.X(O);//Закроем мобильное меню
+      }
     }
+
+    this.T=setTimeout(() => {console.debug('Запуск pro');
+      if (O.f.w(O)) {//Меню не помещается! Делаем мобильную версию
+        e.addClass('zMenuX');//nav
+        b.removeClass('B-L').removeAttr('disabled');//button
+      } else {//Меню горизонтально
+        //console.debug('Вернём right: 0');
+        D.css('right', 0); //div Вернём
+        
+        b.css({'padding-left':0, margin:0});//Убераем button
+        setTimeout(() => {b.hide()},400);
+      }
+
+      D.css({ opacity: 1, 'pointer-events': 'auto' });//div Показываем список
+    }, 700);//Не меньше .6s
   },
   f:{
-    //zMenu.f.w();//Меню не помещается горизонтально
+    //zMenu.f.w(zMenu);//Меню не помещается горизонтально
     //return 1
-    w:()=>{//width: nav div (Когда меню не помещается)
-      let O=zMenu;
-      
+    w:O=>{//width: nav div 'Когда меню не помещается'
       //console.debug('if('+$(O.id + '>div').width()+' >= '+$(O.id).width()+') >= '+($(O.id + '>div').width() >= $(O.id).width()));
+      
       if($(O.id + '>div').width() >= $(O.id).width()){
         return 1
       }
@@ -52,14 +93,30 @@ var zMenu = {//Меню
           $('#bg-' + q).remove();//Удаляем задний фон
         }, 300);
       }
+    },
+    /* zMenu.f.oko(()=>{//Отслеживаем изменения размера браузер окна
+      
+    }); */
+    oko: f => {
+      let M = window.ResizeObserver;//Отслеживаем изменения размера окна
+
+      if (typeof M !== 'undefined') {
+        new M(() => {//1~> Сработало! Наблюдение за обьектом
+          f();
+          //m[0]//even
+          //console.debug(m[0]);
+        })
+        .observe($('html')[0], {});//Передаем элемент и настройки в наблюдатель
+      }
     }
   },
+  //x:0,//Мобильное меню 0=Закрыто, 1=Открыто
   X: O => {//Открыть/Закрыть
   let d = $(O.id + '>div'),
-    b=$(O.id + ' button'),
-    x=d.css('right')=='0px';//1 = Закрываем
+    b=$(O.id + '>button'),
+    x=O.x;//0=Закрыто, 1=Открыто
 
-    console.debug('right: '+d.css('right'), d.css('right')=='0px'?'Закроем':'Откроем');
+    //console.debug('right: '+d.css('right'), 'x: '+x, x?'Закроем':'Откроем');
     
     O.f.bg(
       x
@@ -69,35 +126,19 @@ var zMenu = {//Меню
           i: 'zMenu', //* id Для удаления zMenu.f.bg('string');
           f: () => {  //* ()=>{} Сработает при нажатие на задний фон
             O.X(zMenu);//† Закрыть
-            console.debug('bg'); 
+            //console.debug('bg'); 
           }
     });
 
-    b.removeClass('B-I'+(x?'x-X':'x-M'))
-      .addClass('B-I'+(x?'x-M':'x-X'));
+    b.removeClass('B-Ix-'+(x?'X':'M'))
+      .addClass('B-Ix-'+(x?'M':'X'));
     
-    d.css('right', 
+    d.css('right', //.6s
       x
         ? '-16em'//Закроем
         : 0//Откроем
     );
+    
+    O.x=x?0:1;
   }
 };
-
-/*
-  ★    Название функции
-  *     Описание
-  •     Описание2
-  ◈ ✂ ✓ ✪
-  
-  localStorage.setItem(key, value)
-  localStorage.getItem(key)
-*/
-
-//#region       //✦ Уровень 1 ----
-
-//#endregion    //✦ Уровень 1 ----
-
-//#region           //✦✦ Уровень 2 ----
-
-//#endregion        //✦✦ --------------
