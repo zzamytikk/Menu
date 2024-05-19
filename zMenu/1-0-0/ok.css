@@ -83,12 +83,12 @@
   transform: translate(0, -50%);
 }
 
-.zMenu:not(.zMenuX) nav > div {
-  text-align: right;
-  white-space: nowrap;
-}
 .zMenu nav>div {
-  border: 1px solid red;
+  border: 2px solid red;
+}
+.zMenu:not(.zMenuX) nav > div {
+  float: right;
+  white-space: nowrap;
 }
 
 .zMenu nav > a {

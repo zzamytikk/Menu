@@ -63,9 +63,9 @@ var zMenu = {//Меню
     //zMenu.f.w(zMenu);//Меню не помещается горизонтально
     //return 1
     w:O=>{//width: nav div 'Когда меню не помещается'
-      //console.debug('if('+$(O.id + 'nav').width()+' >= '+$(O.id+'>div').eq(1).width()+') >= '+($(O.id + 'nav').width() >= $(O.id+'>div').eq(1).width()));
+      //console.debug('if('+$(O.id + ' nav > div').width()+' >= '+$(O.id+'>div').eq(1).width()+') >= '+($(O.id + ' nav > div').width() >= $(O.id+'>div').eq(1).width()));
       
-      if($(O.id + 'nav').width() >= $(O.id+'>div').eq(1).width()){
+      if($(O.id + ' nav > div').width() >= $(O.id+' nav').eq(1).width()){
         return 1
       }
     },

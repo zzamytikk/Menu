@@ -26,7 +26,7 @@
   <script src="/zMenu/1-0-0/ok.js" defer></script>
 </head>
   <body><div id="M"><div></div></div>
-  <header class="zMenu zMenuX">
+  <header class="zMenu">
     <div class="zMenuF">
     <div class="zMenuL"><a href="/">Логин</a></div>
     <div>
@@ -34,7 +34,7 @@
         <div>
           <a href="">Главную</a>
           <a href="">Новости</a>
-          <!--<a href="">Елабуга</a>
+          <--<a href="">Елабуга</a>
           <a href="">Каталоги</a>
           <a href="">Файлы судьбы</a>
           <a href="">Чпокальная</a>
@@ -114,8 +114,8 @@
     
     <h4 class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Размеры:</b></h4>
     width:
-     <br>&#8195;• div: <span id="wNaw">...</span> (Всего места для меню)
-     <br>&#8195;• nav: <span id="wDiv">...</span> (Меню)
+     <br>&#8195;• nav: <span id="wNaw">...</span> (Всего места для меню)
+     <br>&#8195;• div: <span id="wDiv">...</span> (Список меню)
      
    <h4 style="display:none;" class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Примeры &lt;a>:</b></h4>
    <div style="display:none;" class="zMenu zMenuX">
@@ -142,8 +142,8 @@
           let O=zMenu;
           
           O.f.w(O);//(Меню не помещается горизонтально)
-          $('#wNaw').html($(O.id).width());
-          $('#wDiv').html($(O.id + '>div').width());
+          $('#wNaw').html($(O.id+' nav').width());
+          $('#wDiv').html($(O.id + ' nav > div').width());
         },
         bac: () => {//
           
