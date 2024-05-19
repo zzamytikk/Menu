@@ -25,8 +25,72 @@
   <link href="/zMenu/1-0-0/ok.css" rel="stylesheet">
   <script src="/zMenu/1-0-0/ok.js" defer></script>
 </head>
-<body>
-  <header><nav></nav></header>
+  <body><div id="M"><div></div></div>
+  <header class="zMenu zMenuX">
+    <div class="zMenuF">
+    <div class="zMenuL"><a href="/">Логин</a></div>
+    <div>
+      <nav>
+        <div>
+          <a href="">Главную</a>
+          <a href="">Новости</a>
+          <!--<a href="">Елабуга</a>
+          <a href="">Каталоги</a>
+          <a href="">Файлы судьбы</a>
+          <a href="">Чпокальная</a>
+          
+          <a href="">Не влезет или влезет? гляди пяточёк</a>
+          <a href="">Форум</a>
+          <a href="">Чпокальная бу2</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>
+          <a href="">Форум</a>-->
+        </div>
+      </nav>
+    </div>
+    <div><button class="B-Ix-M B-L" disabled><p><s></s><s></s></p></button></div>
+    </div>
+  </header>
   <style>
     .menuBac {
       background: #f0f;
@@ -43,19 +107,6 @@
     }
   </style>
   <main>
-    <nav class="zMenu">
-      <button class="B-Ix-M B-L" disabled><p><s></s><s></s></p></button>
-      <div>
-        <a href="">Главная</a>
-        <a href="">Новости</a>
-        <a href="">Файлы судьбы</a>
-        <a href="">Каталог</a>
-        <a href="">Елабуга</a>
-       <!-- <a href="">Чпокальная</a>
-        <a href="">Форум</a>-->
-      </div>
-    </nav>
-
     <h4 class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Кнопки:</b></h4>
     <button id="BmenuX">Меню мобил</button>
     <button id="BmenuBack">background</button>
@@ -63,11 +114,11 @@
     
     <h4 class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Размеры:</b></h4>
     width:
-     <br>&#8195;• nav: <span id="wNaw">...</span>
-     <br>&#8195;• div: <span id="wDiv">...</span>
+     <br>&#8195;• div: <span id="wNaw">...</span> (Всего места для меню)
+     <br>&#8195;• nav: <span id="wDiv">...</span> (Меню)
      
-   <h4 class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Примeры &lt;a>:</b></h4>
-   <div class="zMenu zMenuX">
+   <h4 style="display:none;" class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Примeры &lt;a>:</b></h4>
+   <div style="display:none;" class="zMenu zMenuX">
      <a class="B-Ix-M"><p><s></s><s></s></p></a>
      <a class="B-Ix-M B-L" disabled><p><s></s><s></s></p></a>
      <a class="B-Ix-X"><p><s></s><s></s></p></a>
@@ -84,7 +135,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       gl.$();//Запуск инструментов (bg,resize,menu...)
       z.z.Start.$();
-      zMenu.$();//★ Меню
+      //zMenu.$();//★ Меню
       
       let m={
         w: () => {//Смотрим размеры

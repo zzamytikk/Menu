@@ -4,8 +4,7 @@
 */
 /* Иногда надо устаноаить [id="x"]
     Для понижения приоритета при задавание css через [id="x"] {moj:1;} */
-.zMenu, .zMenu *, .zMenu::after, .zMenu::before,
-.zMenu *::after, .zMenu *::before {/* Помогает интеграции на любой сайт */
+.zMenu, .zMenu *, .zMenu *::after, .zMenu *::before {/* Помогает интеграции на любой сайт */
   position: relative;
   margin: 0;
   padding: 0;
@@ -17,45 +16,101 @@
 }
 
 /* ✦ Меню ✦ *//* #region */
-    /* ✦✦ ! ✦✦ *//* #region */
-.zMenu {z-index: 9;
+    /* ✦✦ ! header ✦✦ *//* #region */
+.zMenu {z-index: 7;
+  --bg: #012;/* background Фон сайта */
+  position: fixed;
+  top:0;
+  width: 100%;
   height: 1.5rem;
-  font-size: 1rem;
-  overflow: hidden;
+  border: 1px solid red;
 }
 
-.zMenu > div {opacity: 0; pointer-events: none;
+.zMenuF {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
-  float: right;
-  width: min-content;
+  margin: 0 auto;
+  padding:0 7px;
+  width: 100%;
+  max-width: 1200px;
   height: 100%;
-  white-space: nowrap;
   background: var(--bg);
+  transition: .3s;
+  border: 1px solid pink
 }
 
-.zMenu > button {z-index: 2;
-  position: absolute;
-  top:3px;
-  right: 0;
-  margin: 0 3px;
+.zMenuF > * {
+  border: 1px solid yellow
 }
-.zMenu a {
+.zMenuF > *:nth-child(2) {
+  width: 100%;
+  height: 100%;
+}
+.zMenuF > *:last-child {
+  display: inline-flex;/* Выравнивает по центру button */
+}
+    /* ✦✦ ! header ✦✦ *//* #endregion */
+    
+    /* ✦✦ Лого ✦✦ *//* #region */
+.zMenuL {
+    min-width: max-content;
+    white-space: nowrap;
+    padding: 0 7px;
+}
+.zMenuL a {
+  cursor: pointer;
+  text-decoration: unset;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 2px 2px #000, 0 1px 7px #888;
+}
+    /* ✦✦ Лого ✦✦ *//* #endregion */
+
+    /* ✦✦ Меню ✦✦ *//* #region */
+.zMenu nav {
+  position: absolute;
+  top:50%;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: min-content;
+  overflow: hidden;
+  border: 1px solid blue;
+}
+.zMenu:not(.zMenuX) nav {
+  font-size: .8em;
+  transform: translate(0, -50%);
+}
+
+.zMenu:not(.zMenuX) nav > div {
+  text-align: right;
+  white-space: nowrap;
+}
+.zMenu nav>div {
+  border: 1px solid red;
+}
+
+.zMenu nav > a {
   margin: 0 9px;
 }
-    /* ✦✦ ! ✦✦ *//* #endregion */
+    /* ✦✦ Меню ✦✦ *//* #endregion */
 
     /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #region */
-.zMenuX > div {
+.zMenuX nav > div {
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   position: fixed;
-  top: 1.7rem;
+  top: 1.5rem;
   right: -16em;
+  right: 0;
   bottom: 0;
+  padding: 5px;
   width: 15em;
-  overflow: auto;
-  transition: .6s;
+  overflow: hidden auto;
+  background: var(--bg);
+  transition: right .6s;
 }
     /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #endregion */
 /* ✦ Меню ✦ *//* #endregion */
@@ -75,7 +130,7 @@
                • <button,a disabled>
 */
     /* ✦✦ ! :hover/disabled/.B-L ✦✦ *//* #region */
-.zMenu :is(button, a) {/* Отталкиваемся от body font: 14px sans-serif; */
+.zMenu nav :is(button, a) {/* Отталкиваемся от body font: 14px sans-serif; */
   --B-C: #59f;/* Цвет */
   display: inline-flex;
   font: inherit;
@@ -83,26 +138,26 @@
   background: #0000;
   cursor: pointer;
   text-decoration: unset;
-  transition: .3s;
+  transition: opacity .3s;
 }
-.zMenu :is(button, a):not([disabled]):hover,
-.zMenu .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
-.zMenu :is(button, a):not(.B-L)[disabled] {/* disabled */
+.zMenu nav :is(button, a):not([disabled]):hover,
+.zMenu nav .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
+.zMenu nav :is(button, a):not(.B-L)[disabled] {/* disabled */
   opacity: .3;
 }
 /* смартфоны, устройства с сенсорным экраном, с которым работают пальцами */
 @media (hover: none) and (pointer: coarse) {
-  .zMenu :is(button, a):not([disabled]):hover {/* Отжимает opacity.3 (На телефоне остаёдся гореть после нажатия) */
+  .zMenu nav :is(button, a):not([disabled]):hover {/* Отжимает opacity.3 (На телефоне остаёдся гореть после нажатия) */
     opacity: 1;
   }
 }
 
-.zMenu .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
-.zMenu :is(button, a)[disabled] {/* disabled/Загрузка */
+.zMenu nav .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
+.zMenu nav :is(button, a)[disabled] {/* disabled/Загрузка */
   /* cursor: default; */
   pointer-events: none;
 }
-.zMenu :is(button, a).B-L :is(p, b) {/* Загрузка */
+.zMenu nav :is(button, a).B-L :is(p, b) {/* Загрузка */
   opacity: .6;
 }
     /* ✦✦ ! :hover/disabled/.B-L ✦✦ *//* #endregion */

@@ -26,27 +26,30 @@ var zMenu = {//Меню
       b=e.children('button');
       
     if(x){//Первый запуск
+    console.debug('pro();','Первый запуск,!');
       O.f.oko(() => { //Отслеживаем изменения размера браузер окна
         O.pro(O);//Стандарт/Мобильное
       });
     }else{//Изменили размер экрана (Браузер)
+      console.debug('pro();','Изменили размер экрана (Браузер)');
       e.removeClass('zMenuX');//nav Вернём нормальное меню
       D.removeAttr('style');//div Спрячим список меню
       b.removeAttr('style')//button Вернём кнопку меню как загрузку
         .addClass('B-L').attr('disabled','');
 
       if(O.x){//Мобильное меню открыто
-        //console.debug(O.x, 'Закроем мобильное меню');
+        console.debug('pro();',O.x, 'Мобильное меню открыто, Закроем!');
         O.X(O);//Закроем мобильное меню
       }
     }
 
-    this.T=setTimeout(() => {console.debug('Запуск pro');
+    this.T=setTimeout(() => {console.debug('pro();','Запуск! setTimeout');
       if (O.f.w(O)) {//Меню не помещается! Делаем мобильную версию
+        console.debug('pro();','Меню не помещается! Делаем мобильную версию');
         e.addClass('zMenuX');//nav
         b.removeClass('B-L').removeAttr('disabled');//button
       } else {//Меню горизонтально
-        //console.debug('Вернём right: 0');
+        console.debug('pro();','Меню горизонтально! Вернём right: 0');
         D.css('right', 0); //div Вернём
         
         b.css({'padding-left':0, margin:0});//Убераем button
@@ -60,9 +63,9 @@ var zMenu = {//Меню
     //zMenu.f.w(zMenu);//Меню не помещается горизонтально
     //return 1
     w:O=>{//width: nav div 'Когда меню не помещается'
-      //console.debug('if('+$(O.id + '>div').width()+' >= '+$(O.id).width()+') >= '+($(O.id + '>div').width() >= $(O.id).width()));
+      //console.debug('if('+$(O.id + 'nav').width()+' >= '+$(O.id+'>div').eq(1).width()+') >= '+($(O.id + 'nav').width() >= $(O.id+'>div').eq(1).width()));
       
-      if($(O.id + '>div').width() >= $(O.id).width()){
+      if($(O.id + 'nav').width() >= $(O.id+'>div').eq(1).width()){
         return 1
       }
     },
@@ -116,7 +119,7 @@ var zMenu = {//Меню
     b=$(O.id + '>button'),
     x=O.x;//0=Закрыто, 1=Открыто
 
-    //console.debug('right: '+d.css('right'), 'x: '+x, x?'Закроем':'Откроем');
+    console.debug('pro();', 'Мобильное меню: '+(x?'Откроем':'Закроем')+'! right: '+d.css('right'));
     
     O.f.bg(
       x
