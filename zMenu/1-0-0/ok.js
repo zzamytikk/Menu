@@ -45,10 +45,12 @@ var zMenu = {//Меню
     }
 
     this.T=setTimeout(() => {
-      D.removeAttr('style');  //div Уберём окно
+      //D.removeAttr('style');  //div Уберём окно
       H.removeClass('zMenuX');//header Вернём нормальное меню(когда мобил) Для начала проверки!
       
       this.T=setTimeout(() => {//console.debug('pro();','Запуск! setTimeout');
+        D.removeAttr('style');  //div Уберём окно
+         
         if (O.f.w(O)) {//Меню не помещается! Делаем мобильную версию
           //console.debug('pro();','Меню не помещается! Делаем мобильную версию');
           H.addClass('zMenuX');//header
