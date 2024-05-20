@@ -72,7 +72,7 @@
     /* ✦✦ Лого ✦✦ *//* #endregion */
 
     /* ✦✦ Меню ✦✦ *//* #region */
-.zMenu nav {
+.zMenu nav {opacity: 0; pointer-events: none;
   position: absolute;
   top:50%;
   bottom: 0;
@@ -83,7 +83,7 @@
   transition: opacity .3s;
   /* border: 1px solid blue; */
 }
-.zMenu:not(.zMenuX) nav {opacity: 0; pointer-events: none;
+.zMenu:not(.zMenuX) nav {
   font-size: .8em;
   transform: translate(0, -50%);
 }

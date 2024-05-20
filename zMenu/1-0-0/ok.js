@@ -12,7 +12,7 @@ var zMenu = {//Меню
 
     O.pro(O, 1);//Стандарт/Мобильное проверка
   },
-  /* zMenu.pro(//Стандарт/Мобильное
+  /* zMenu.pro(//Проверка Стандарт/Мобильное
        zMenu,//Сократим путь
        1     //Первый запуск (Загрузка страницы)
      );
@@ -27,45 +27,47 @@ var zMenu = {//Меню
       B=$('.zMenuB').find('.B-Ix-M, .B-Ix-X');//button
     
     if(x){//Первый запуск
-      console.debug('pro();','Первый запуск!');
+      //console.debug('pro();','Первый запуск!');
       O.f.oko(() => { //Отслеживаем изменения размера браузер окна
-        O.pro(O);//Стандарт/Мобильное
+        O.pro(O);//Проверка Стандарт/Мобильное
       });
     }else{//Изменили размер экрана (Браузер)
-      console.debug('pro();','Изменили размер экрана (Браузер)');
+      //console.debug('pro();','Изменили размер экрана (Браузер)');
 
       N.removeAttr('style');  //Спрячим список меню opacity: 0, pointer-events: none
-      H.removeClass('zMenuX');//header Вернём нормальное меню(когда мобил)
-      D.removeAttr('style');  //div Уберём окно
       B.removeAttr('style')   //button Вернём кнопку меню как загрузку
         .addClass('B-L').attr('disabled','');
 
       if (O.x) { //Мобильное меню открыто
-        console.debug('pro();', O.x, 'Мобильное меню открыто, Закроем!');
-        O.X(O); //Закроем мобильное меню
+        //console.debug('pro();', O.x, 'Мобильное меню открыто, Закроем!');
+        O.X(O);  //Закроем мобильное меню
       }
     }
 
-    this.T=setTimeout(() => {console.debug('pro();','Запуск! setTimeout');
-      if (O.f.w(O)) {//Меню не помещается! Делаем мобильную версию
-        console.debug('pro();','Меню не помещается! Делаем мобильную версию');
-        H.addClass('zMenuX');//header
-        B.removeClass('B-L').removeAttr('disabled');//button
-      } else {//Меню горизонтально
-        console.debug('pro();','Меню горизонтально! Вернём right: 0');
-        D.css('right', 0);//div Вернём окно
-
-        B.css({'padding-left':0, margin:0});//Убераем button
-      }
-
-      N.css({ opacity: 1, 'pointer-events': 'auto' });//div Показываем список
-    }, 700);//Не меньше .6s
+    this.T=setTimeout(() => {
+      D.removeAttr('style');  //div Уберём окно
+      H.removeClass('zMenuX');//header Вернём нормальное меню(когда мобил) Для начала проверки!
+      
+      this.T=setTimeout(() => {//console.debug('pro();','Запуск! setTimeout');
+        if (O.f.w(O)) {//Меню не помещается! Делаем мобильную версию
+          //console.debug('pro();','Меню не помещается! Делаем мобильную версию');
+          H.addClass('zMenuX');//header
+          B.removeClass('B-L').removeAttr('disabled');//button
+        } else {//Меню горизонтально
+          //console.debug('pro();','Меню горизонтально! Вернём right: 0');
+          D.css('right', 0);//div Вернём окно
+          B.css({'padding-left':0, margin:0});//Убераем button
+        }
+  
+        N.css({ opacity: 1, 'pointer-events': 'auto' });//div Показываем список
+      }, 350);//Всё вместе! Не меньше .6s для закрытия окна, когда открыто
+    }, 350);//Не меньше .3s (opacity)
   },
   f:{
     //zMenu.f.w(zMenu);//Меню не помещается горизонтально
     //return 1
     w:O=>{//width: nav div 'Когда меню не помещается'
-      console.debug('if('+$(O.id + ' nav > div').eq(0).width()+' >= '+$(O.id+' nav').eq(0).width()+') >= '+($(O.id + ' nav > div').eq(0).width() >= $(O.id+' nav').eq(0).width()));
+      //console.debug('if('+$(O.id + ' nav > div').eq(0).width()+' >= '+$(O.id+' nav').eq(0).width()+') >= '+($(O.id + ' nav > div').eq(0).width() >= $(O.id+' nav').eq(0).width()));
       
       if($(O.id + ' nav > div').eq(0).width() >= $(O.id+' nav').eq(0).width()){
         return 1
@@ -117,11 +119,19 @@ var zMenu = {//Меню
   },
   //x:0,//Мобильное меню 0=Закрыто, 1=Открыто
   X: O => {//Открыть/Закрыть
-  let D = $(O.id + ' nav>div'),//div Окно
-    B=$('.zMenuB').find('.B-Ix-M, .B-Ix-X'),//button
-    x=O.x;//0=Закрыто, 1=Открыто
+    let x=O.x;//0=Закрыто, 1=Открыто
     
-    console.debug('pro();', 'Мобильное меню: '+(x?'Откроем':'Закроем')+'! right: '+D.css('right'));
+    //console.debug('pro();', 'Мобильное меню: '+(x?'Откроем':'Закроем')+'! right: '+$(O.id + ' nav>div').css('right'));
+    
+    $(O.id + ' nav>div').css('right', //.6s Закрытие окна
+      x
+        ? '-16em'//Закроем
+        : 0//Откроем
+    );
+    
+    $('.zMenuB').find('.B-Ix-M, .B-Ix-X')
+      .removeClass('B-Ix-' + (x ? 'X' : 'M'))
+      .addClass('B-Ix-' + (x ? 'M' : 'X'));
     
     O.f.bg(
       x
@@ -134,15 +144,6 @@ var zMenu = {//Меню
             //console.debug('bg'); 
           }
     });
-
-    B.removeClass('B-Ix-'+(x?'X':'M'))
-      .addClass('B-Ix-'+(x?'M':'X'));
-    
-    D.css('right', //.6s
-      x
-        ? '-16em'//Закроем
-        : 0//Откроем
-    );
     
     O.x=x?0:1;
   }
