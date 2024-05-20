@@ -16,12 +16,13 @@
 /* ✦ Меню ✦ *//* #region */
     /* ✦✦ ! header ✦✦ *//* #region */
 .zMenu {z-index: 7;
-  --bg: #012;/* background Фон сайта */
+  --Mbg: #012;/* background Фон сайта */
+  --Mbg: var(--bg);/* Временно */
   position: fixed;
   top:0;
   width: 100%;
   height: 1.5rem;
-  border: 1px solid red;
+ /* border: 1px solid red;*/
 }
 
 .zMenuF {
@@ -33,20 +34,25 @@
   width: 100%;
   max-width: 1200px;
   height: 100%;
-  background: var(--bg);
+  background: var(--Mbg);
   transition: .3s;
-  border: 1px solid pink
+ /* border: 1px solid pink */
 }
 
 .zMenuF > * {
-  border: 1px solid yellow
+ /* border: 1px solid yellow */
 }
 .zMenuF > *:nth-child(2) {/* Список меню */
   width: 100%;
   height: 100%;
 }
-.zMenuF > *:last-child {/* button icon (Открыть меню, ..) */
+.zMenuB {/* button icon (Открыть меню, ..) */
   display: inline-flex;/* Выравнивает по центру button */
+}
+.zMenuB [class*="B-Ix-"] {/* Спрятать/Показать button Меню */
+  overflow: hidden;
+  transition: padding .7s, border .7s;
+  
 }
     /* ✦✦ ! header ✦✦ *//* #endregion */
     
@@ -74,15 +80,16 @@
   width: 100%;
   height: min-content;
   overflow: hidden;
-  border: 1px solid blue;
+  transition: opacity .3s;
+  /* border: 1px solid blue; */
 }
-.zMenu:not(.zMenuX) nav {
+.zMenu:not(.zMenuX) nav {opacity: 0; pointer-events: none;
   font-size: .8em;
   transform: translate(0, -50%);
 }
 
-.zMenu nav>div {
-  border: 2px solid red;
+.zMenu nav > div {
+  /* border: 2px solid red; */
 }
 .zMenu:not(.zMenuX) nav > div {
   float: right;
@@ -92,7 +99,7 @@
 .zMenu a {
   margin: 0 7px;
 }
-.zMenu button {
+.zMenuB button {
   margin: 0 4px;
 }
     /* ✦✦ Меню ✦✦ *//* #endregion */
@@ -105,12 +112,11 @@
   position: fixed;
   top: 1.5rem;
   right: -16em;
-  right: 0;
   bottom: 0;
   padding: 5px;
   width: 15em;
   overflow: hidden auto;
-  background: var(--bg);
+  background: var(--Mbg);
   transition: right .6s;
 }
     /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #endregion */
@@ -131,7 +137,7 @@
                • <button,a disabled>
 */
     /* ✦✦ ! :hover/disabled/.B-L ✦✦ *//* #region */
-.zMenu nav :is(button, a) {/* Отталкиваемся от body font: 14px sans-serif; */
+:is(.zMenu nav, .zMenuB) :is(button, a) {/* Отталкиваемся от body font: 14px sans-serif; */
   --B-C: #59f;/* Цвет */
   display: inline-flex;
   font: inherit;
@@ -139,26 +145,26 @@
   background: #0000;
   cursor: pointer;
   text-decoration: unset;
-  transition: opacity .3s;
+  transition: .3s;
 }
-.zMenu nav :is(button, a):not([disabled]):hover,
-.zMenu nav .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
-.zMenu nav :is(button, a):not(.B-L)[disabled] {/* disabled */
+:is(.zMenu nav, .zMenuB) :is(button, a):not([disabled]):hover,
+:is(.zMenu nav, .zMenuB) .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
+:is(.zMenu nav, .zMenuB) :is(button, a):not(.B-L)[disabled] {/* disabled */
   opacity: .3;
 }
 /* смартфоны, устройства с сенсорным экраном, с которым работают пальцами */
 @media (hover: none) and (pointer: coarse) {
-  .zMenu nav :is(button, a):not([disabled]):hover {/* Отжимает opacity.3 (На телефоне остаёдся гореть после нажатия) */
+  :is(.zMenu nav, .zMenuB) :is(button, a):not([disabled]):hover {/* Отжимает opacity.3 (На телефоне остаёдся гореть после нажатия) */
     opacity: 1;
   }
 }
 
-.zMenu nav .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
-.zMenu nav :is(button, a)[disabled] {/* disabled/Загрузка */
+:is(.zMenu nav, .zMenuB) .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
+:is(.zMenu nav, .zMenuB) :is(button, a)[disabled] {/* disabled/Загрузка */
   /* cursor: default; */
   pointer-events: none;
 }
-.zMenu nav :is(button, a).B-L :is(p, b) {/* Загрузка */
+:is(.zMenu nav, .zMenuB) :is(button, a).B-L :is(p, b) {/* Загрузка */
   opacity: .6;
 }
     /* ✦✦ ! :hover/disabled/.B-L ✦✦ *//* #endregion */
@@ -194,29 +200,23 @@
 
     /* ✦✦ click Отображение нажатия кнопки ✦✦ *//* #region */
         /* ✦✦✦ ! ✦✦✦ *//* #region */
-.zMenu :is(button, a):active::before {z-index: -1;
+:is(.zMenu nav, .zMenuB) :is(button, a):active::before {
     content: '';
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    border: 1px solid #fffd;
-    outline: 1px solid #000d;
-    background: #9994;
-    box-shadow: 0 0 3px #999;
-    box-shadow: 0 0 3px #000, 0 0 3px #fff;
+    box-shadow: inset 0 0 #fff, inset 0 0 #000,
+      0 0 3px #fff, 0 0 3px #000;
     border-radius: 50%;
     pointer-events: none;
     animation: click_PL 1s
 }
 @keyframes click_PL {
     9% {
-        transform: scale(1.2, 1.2);
-        border: 1px solid #fff5;
-        outline: 1px solid #0005;
-        box-shadow: 0 0 25px #999;
-        box-shadow: 0 0 25px #000, 0 0 25px #fff;
+        box-shadow: inset 0 0 #fff, inset 0 0 #000,
+          0 0 9px #fff, 0 0 9px #000;
     }
 }
         /* ✦✦✦ ! ✦✦✦ *//* #endregion */
@@ -298,7 +298,7 @@
 /* ✦ button.B-I(x) p,s icon ✦ *//* #endregion */
 
 /* ✦ .Obg Задний фон ✦ *//* #region */
-.Obg {z-index: 8; opacity: 0;
+.Obg {z-index: 6; opacity: 0;
     position:fixed;
     top:0;
     left:0;

@@ -34,11 +34,12 @@
           <div>
             <a href="">Главную</a>
             <a href="">Новости</a>
-            <--<a href="">Елабуга</a>
+            
+            <a href="">Елабуга</a>
             <a href="">Каталоги</a>
             <a href="">Файлы судьбы</a>
+            <!--
             <a href="">Чпокальная</a>
-            
             <a href="">Не влезет или влезет? гляди пяточёк</a>
             <a href="">Форум</a>
             <a href="">Чпокальная бу2</a>
@@ -88,7 +89,8 @@
           </div>
         </nav>
       </div>
-      <div>
+      <div class="zMenuB">
+        <!-- Можно добавить свои button icon -->
         <button class="B-Ix-M B-L" disabled><p><s></s><s></s></p></button>
       </div>
     </div>
@@ -112,7 +114,7 @@
     <h4 class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Кнопки:</b></h4>
     <button id="BmenuX">Меню мобил</button>
     <button id="BmenuBack">background</button>
-    <button id="BmenuA">A</button>
+    <button id="BmenuA">A +-50</button>
     
     <h4 class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Размеры:</b></h4>
     <style>
@@ -152,7 +154,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       gl.$();//Запуск инструментов (bg,resize,menu...)
       z.z.Start.$();
-      //zMenu.$();//★ Меню
+      zMenu.$();//★ Меню
       
       let m={
         w: () => {//Смотрим размеры
@@ -166,8 +168,8 @@
             .css(
               'background',
               O.f.w(O)//(Меню не помещается горизонтально)
-                ? 'green'
-                : 'red'
+                ? 'red'
+                : 'green'
             )
             .html(D);
         },
@@ -176,19 +178,76 @@
         }
       };
       
-      $('#BmenuX').on('click', () => {//mobil
-        $('.zMenu').toggleClass('zMenuX');//Добавим удалим class
-        m.w();//Смотрим размеры
-      });
       m.w();//Смотрим размеры
       
+      $('#BmenuX').on('click', () => {//mobil
+        $(zMenu.id).toggleClass('zMenuX');//Добавим удалим class
+      });
+      
       $('#BmenuBack').on('click', () => { //background
-        $('.zMenu').toggleClass('menuBac'); //Добавим удалим class
+        $(zMenu.id).toggleClass('menuBac'); //Добавим удалим class
       });
       //$('.zMenu').addClass('menuBac');
       
-      $('#BmenuA').on('click', () => { //background
-        $('.zMenu').toggleClass('menuA'); //Добавим удалим class
+      $('#BmenuA').on('click', () => { //Добавим A +50
+        if(!$('.zMenu nav a').eq(7)[0]) {//Добавим
+          $(zMenu.id + ' nav > div')
+            .html(`<a href="">Елабуга</a>
+              <a href="">Каталоги</a>
+              <a href="">Файлы судьбы</a>
+              <a href="">Чпокальная</a>
+              <a href="">Не влезет или влезет? гляди пяточёк</a>
+              <a href="">Форум</a>
+              <a href="">Чпокальная бу2</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>
+              <a href="">Форум</a>`)
+        } else {//Уберём
+          $('.zMenu nav a').each((i, e) => {
+            if(i > 1) $(e).remove()
+          })
+        }
+ 
         m.w();//Смотрим размеры
       });
       

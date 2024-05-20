@@ -3,13 +3,13 @@
     © Copyright Плюшки для сайтов 2024
 */
 var zMenu = {//Меню
-  id:'.zMenu',//<nav class меню
+  id:'.zMenu',//<header меню
   //zMenu.$();//★ Меню
   $:() => {//Запуск
     let O=zMenu;
-    
-    $(O.id+'>button').on('click', () => O.X(O));
-    
+
+    $(O.id+'B .B-Ix-M').on('click', () => O.X(O));
+
     O.pro(O, 1);//Стандарт/Мобильное проверка
   },
   /* zMenu.pro(//Стандарт/Мобильное
@@ -21,51 +21,53 @@ var zMenu = {//Меню
   pro: (O, x) => {
     clearTimeout(this.T);
 
-    let e=$(O.id),//nav
-      D=e.children('div'),//div
-      b=e.children('button');
-      
+    let H=$(O.id),//header
+      N=H.find('nav'),//nav
+      D=N.children('div'),//div Окно
+      B=$('.zMenuB').find('.B-Ix-M, .B-Ix-X');//button
+    
     if(x){//Первый запуск
-    console.debug('pro();','Первый запуск,!');
+      console.debug('pro();','Первый запуск!');
       O.f.oko(() => { //Отслеживаем изменения размера браузер окна
         O.pro(O);//Стандарт/Мобильное
       });
     }else{//Изменили размер экрана (Браузер)
       console.debug('pro();','Изменили размер экрана (Браузер)');
-      e.removeClass('zMenuX');//nav Вернём нормальное меню
-      D.removeAttr('style');//div Спрячим список меню
-      b.removeAttr('style')//button Вернём кнопку меню как загрузку
+
+      N.removeAttr('style');  //Спрячим список меню opacity: 0, pointer-events: none
+      H.removeClass('zMenuX');//header Вернём нормальное меню(когда мобил)
+      D.removeAttr('style');  //div Уберём окно
+      B.removeAttr('style')   //button Вернём кнопку меню как загрузку
         .addClass('B-L').attr('disabled','');
 
-      if(O.x){//Мобильное меню открыто
-        console.debug('pro();',O.x, 'Мобильное меню открыто, Закроем!');
-        O.X(O);//Закроем мобильное меню
+      if (O.x) { //Мобильное меню открыто
+        console.debug('pro();', O.x, 'Мобильное меню открыто, Закроем!');
+        O.X(O); //Закроем мобильное меню
       }
     }
 
     this.T=setTimeout(() => {console.debug('pro();','Запуск! setTimeout');
       if (O.f.w(O)) {//Меню не помещается! Делаем мобильную версию
         console.debug('pro();','Меню не помещается! Делаем мобильную версию');
-        e.addClass('zMenuX');//nav
-        b.removeClass('B-L').removeAttr('disabled');//button
+        H.addClass('zMenuX');//header
+        B.removeClass('B-L').removeAttr('disabled');//button
       } else {//Меню горизонтально
         console.debug('pro();','Меню горизонтально! Вернём right: 0');
-        D.css('right', 0); //div Вернём
-        
-        b.css({'padding-left':0, margin:0});//Убераем button
-        setTimeout(() => {b.hide()},400);
+        D.css('right', 0);//div Вернём окно
+
+        B.css({'padding-left':0, margin:0});//Убераем button
       }
 
-      D.css({ opacity: 1, 'pointer-events': 'auto' });//div Показываем список
+      N.css({ opacity: 1, 'pointer-events': 'auto' });//div Показываем список
     }, 700);//Не меньше .6s
   },
   f:{
     //zMenu.f.w(zMenu);//Меню не помещается горизонтально
     //return 1
     w:O=>{//width: nav div 'Когда меню не помещается'
-      //console.debug('if('+$(O.id + ' nav > div').width()+' >= '+$(O.id+' nav').eq(1).width()+') >= '+($(O.id + ' nav > div').width() >= $(O.id+' nav').eq(1).width()));
+      console.debug('if('+$(O.id + ' nav > div').eq(0).width()+' >= '+$(O.id+' nav').eq(0).width()+') >= '+($(O.id + ' nav > div').eq(0).width() >= $(O.id+' nav').eq(0).width()));
       
-      if($(O.id + ' nav > div').width() >= $(O.id+' nav').eq(1).width()){
+      if($(O.id + ' nav > div').eq(0).width() >= $(O.id+' nav').eq(0).width()){
         return 1
       }
     },
@@ -115,11 +117,11 @@ var zMenu = {//Меню
   },
   //x:0,//Мобильное меню 0=Закрыто, 1=Открыто
   X: O => {//Открыть/Закрыть
-  let d = $(O.id + '>div'),
-    b=$(O.id + '>button'),
+  let D = $(O.id + ' nav>div'),//div Окно
+    B=$('.zMenuB').find('.B-Ix-M, .B-Ix-X'),//button
     x=O.x;//0=Закрыто, 1=Открыто
-
-    console.debug('pro();', 'Мобильное меню: '+(x?'Откроем':'Закроем')+'! right: '+d.css('right'));
+    
+    console.debug('pro();', 'Мобильное меню: '+(x?'Откроем':'Закроем')+'! right: '+D.css('right'));
     
     O.f.bg(
       x
@@ -133,10 +135,10 @@ var zMenu = {//Меню
           }
     });
 
-    b.removeClass('B-Ix-'+(x?'X':'M'))
+    B.removeClass('B-Ix-'+(x?'X':'M'))
       .addClass('B-Ix-'+(x?'M':'X'));
     
-    d.css('right', //.6s
+    D.css('right', //.6s
       x
         ? '-16em'//Закроем
         : 0//Откроем
