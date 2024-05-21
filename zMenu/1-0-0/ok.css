@@ -2,6 +2,7 @@
     ✫ Версия 1.0.0
     © Copyright Плюшки для сайтов 2024
 */
+
 .zMenu, .zMenu *, .zMenu *::after, .zMenu *::before {/* Помогает интеграции на любой сайт */
   position: relative;
   margin: 0;
@@ -14,10 +15,24 @@
 }
 
 /* ✦ Меню ✦ *//* #region */
+    /* ✦✦ .tema(8-9) Расцветка ✦✦ *//* #region */
+/* Для тёмного фона добавим class
+     в: <body class="tema9"
+   Для светлого: tema8
+*/
+.tema8 .zMenu {/* Светлый */
+  --bg: #fff;/* background Фон сайта */
+  --Ct: #000;/* color текст */
+}
+.tema9 .zMenu {/* Тёмный */
+  --bg: #012;
+  --Ct: #ccc;
+}
+    /* ✦✦ .tema(8-9) Расцветка ✦✦ *//* #endregion */
     /* ✦✦ ! header ✦✦ *//* #region */
 .zMenu {z-index: 7;
-  --Mbg: #012;/* background Фон сайта */
-  --Mbg: var(--bg);/* Временно */
+  --Mbg: var(--bg, #012);
+  --MCt: var(--Ct, #ccc);
   position: fixed;
   top:0;
   width: 100%;
@@ -64,6 +79,7 @@
 .zMenuL a {
   cursor: pointer;
   text-decoration: unset;
+  color: var(--Ct);
   color: #fff;
   font-size: 1.2em;
   font-weight: 600;
@@ -126,7 +142,7 @@
 }
 .zMenuX nav a:not(:last-child) {
   border-bottom: 1px solid;
-  border-image: linear-gradient(to right, #0000, #222, #0000) 1;/* Для белого #ddd */
+  border-image: linear-gradient(to right, #0000, var(--MCt), #0000) 1;/* Для белого #ddd */
 }
 .zMenuX nav a:hover {
   --B-bg: #0b01 !important;
