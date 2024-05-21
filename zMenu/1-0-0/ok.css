@@ -40,10 +40,11 @@
 }
 
 .zMenuF > * {
- /* border: 1px solid yellow */
+  /* border: 1px solid yellow */
 }
 .zMenuF > *:nth-child(2) {/* Список меню */
   width: 100%;
+
   height: 100%;
 }
 .zMenuB {/* button icon (Открыть меню, ..) */
@@ -58,9 +59,9 @@
     
     /* ✦✦ Лого ✦✦ *//* #region */
 .zMenuL {
-  min-width: max-content;
+  /*min-width: min-content;*/
   white-space: nowrap;
-  padding: 0 7px;
+  padding: 0 14px 0 7px;
 }
 .zMenuL a {
   cursor: pointer;
@@ -71,14 +72,14 @@
 }
     /* ✦✦ Лого ✦✦ *//* #endregion */
 
-    /* ✦✦ Меню ✦✦ *//* #region */
+    /* ✦✦ Список меню ✦✦ *//* #region */
 .zMenu nav {opacity: 0; pointer-events: none;
   position: absolute;
   top:50%;
-  bottom: 0;
-  right: 0;
   width: 100%;
-  height: min-content;
+  /* bottom: 0;
+  right: 0;
+  height: min-content; */
   overflow: hidden;
   transition: opacity .3s;
   /* border: 1px solid blue; */
@@ -89,20 +90,20 @@
 }
 
 .zMenu nav > div {
-  /* border: 2px solid red; */
+  border: 2px solid red;
 }
 .zMenu:not(.zMenuX) nav > div {
-  float: right;
+  float:right;
   white-space: nowrap;
 }
 
-.zMenu a {
+.zMenu:not(.zMenuX) nav a {
   margin: 0 7px;
 }
 .zMenuB button {
   margin: 0 4px;
 }
-    /* ✦✦ Меню ✦✦ *//* #endregion */
+    /* ✦✦ Список меню ✦✦ *//* #endregion */
 
     /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #region */
 .zMenuX nav > div {
@@ -113,12 +114,61 @@
   top: 1.5rem;
   right: -16em;
   bottom: 0;
-  padding: 5px;
   width: 15em;
   overflow: hidden auto;
   background: var(--Mbg);
   transition: right .6s;
 }
+
+        /* ✦✦✦ а Список ✦✦✦ *//* #region */
+.zMenuX nav a {
+  width: 100%;
+  border: 1px solid red;
+}
+        
+        
+        
+        
+        
+        
+.MkS :is(button, a) {
+    display: block;
+    padding: 3px 0;
+    width: 100%;
+    text-align: left;
+}
+.MkS :is(button, a):not(:last-child) {
+    border-bottom: 1px solid;
+    border-image: var(--lin-bri-5-2);
+}
+
+body:not(.B-stop) .MkS :is(button, a):not([disabled]):hover {
+    background: var(--bg1-lg1);
+}
+
+.MkS :is(button, a).nM1 b:first-child {/* + Нажатый button/a */
+    color: var(--c1-1);
+}
+
+body:not(.B-stop) .MkS :is(button, a):not([disabled]):hover::before {
+    content: '•';
+    position: absolute;
+    left: -.9375rem;
+    top: .125rem;
+    color: var(--c1-1);
+    transform: scale(0);
+    animation: MrSt .3s forwards
+}
+@keyframes MrSt {
+    50% {
+        color: var(--C);
+        transform: scale(1.5)
+    }
+    100% {
+        transform: scale(1)
+    }
+}
+        /* ✦✦✦ а Список ✦✦✦ *//* #endregion */
     /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #endregion */
 /* ✦ Меню ✦ *//* #endregion */
 
