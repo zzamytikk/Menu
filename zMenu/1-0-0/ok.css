@@ -16,23 +16,23 @@
 
 /* ✦ Меню ✦ *//* #region */
     /* ✦✦ .tema(8-9) Расцветка ✦✦ *//* #region */
-/* Для тёмного фона добавим class
-     в: <body class="tema9"
-   Для светлого: tema8
+/* • Для тёмного фона добавим class
+      в: <body class="tema9"
+   
+   По умолчанию белый фон!
 */
-.tema8 .zMenu {/* Светлый */
-  --bg: #fff;/* background Фон сайта */
-  --Ct: #000;/* color текст */
-}
 .tema9 .zMenu {/* Тёмный */
-  --bg: #012;
-  --Ct: #ccc;
+  --bg: #012;  /* background Фон сайта */
+  --Ct: #ccc;  /* color текст */
+  --c1-1: #afa;/* Кнопка нажата */
 }
     /* ✦✦ .tema(8-9) Расцветка ✦✦ *//* #endregion */
+
     /* ✦✦ ! header ✦✦ *//* #region */
 .zMenu {z-index: 7;
-  --Mbg: var(--bg, #012);
-  --MCt: var(--Ct, #ccc);
+  --Mbg: var(--bg, #fff);    /* background Фон сайта */
+  --MCt: var(--Ct, #000);    /* color текст */
+  --Mc1-1: var(--c1-1, #0b0);/* Кнопка нажата */
   position: fixed;
   top:0;
   width: 100%;
@@ -114,6 +114,10 @@
 .zMenu:not(.zMenuX) nav a {
   margin: 0 7px;
 }
+.zMenu:not(.zMenuX) nav a.nM1 {/* + Нажатый a */
+  opacity: .3;
+}
+
 .zMenuB button {
   margin: 0 4px;
 }
@@ -144,34 +148,35 @@
   border-bottom: 1px solid;
   border-image: linear-gradient(to right, #0000, var(--MCt), #0000) 1;/* Для белого #ddd */
 }
-.zMenuX nav a:hover {
-  --B-bg: #0b01 !important;
+.zMenuX nav :is(a:hover, a.nM1) {
+  --B-bg: #0b01 !important;/* background a */
 }
 
-.zMenuX nav a:hover::before {
-  content: '•';
+.zMenuX nav a::after {
   position: absolute;
   left: 6px;
-  color: #afa;
-  transform: scale(0);
-  animation: MrSt .3s forwards
+  color: var(--MCt);
+}
+
+.zMenuX nav a:hover::after {
+  content: '•';
+  opacity: 0;
+  animation: MrSt .4s forwards
 }
 @keyframes MrSt {
     50% {
-        color: #0000;
-        transform: scale(1.5)
+      opacity: 1;
     }
     100% {
-        transform: scale(1)
+      opacity: .3;
     }
 }
 
-
-
-
-.MkS :is(button, a).nM1 b:first-child {/* + Нажатый button/a */
-    color: var(--c1-1);
+.zMenuX nav a.nM1::after {/* Посветим нажатую кнопку раздела */
+  content: '•';
+  color: var(--Mc1-1);
 }
+
         /* ✦✦✦ а Список ✦✦✦ *//* #endregion */
     /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #endregion */
 /* ✦ Меню ✦ *//* #endregion */
@@ -370,210 +375,3 @@
     }
 }
 /* ✦ .Obg Задний фон ✦ *//* #endregion */
-
-
-
-
-
-
-
-
-/* 🢃🢃🢃 Окно Меню 🢃🢃🢃 *//* #region */
-    /* ⮟⮟⮟ ! ⮟⮟⮟ *//* #region */
-.M {
-    ---M-w: 17rem;/* Размер окна */
-    position: fixed;
-    top: 2.5rem;
-    left: 0;
-    bottom: 0;
-    padding: 0 5px 0 1.1875rem;/* 0 5 0 19 */
-    width: var(---M-w);/* 238 | 272 | 306 (Минимум делать не меньше 240px) */
-    background: var(--bg);
-    overflow: hidden;
-    transition: .3s, var(--trans);
-}
-.M:not(.M-X), .M:hover {
-    overflow: hidden auto;
-}
-
-.M > div {
-    width: calc(var(---M-w) - (var(--scrollW) + 1.1875rem + 5px));/* Коректировка дизайна под scroll (убераем дёрганье)
-        .M padding: 0 5px 0 1.1875rem;
-    */
-    transition: .3s, var(--trans);
-}
-
-.M hr {
-    display: none;
-    margin: 15px 0;
-    width: 100%;
-}
-    /* ⮝⮝⮝ ! ⮝⮝⮝ *//* #endregion */
-
-    /* ⮟⮟⮟ .M nav ⮟⮟⮟ *//* #region */
-        /* 🠗🠗🠗 dl button 🠗🠗🠗 *//* #region */
-.M nav > dl {
-    display: block;
-    left: 0;/* Для Анимации убераем кнопку -200% */
-    margin: .3125em 0;/* 5 0 */
-    width: 88%;
-    height: 1em;/* Для Анимации убераем кнопку -200% */
-    font-size: var(---med-B-20-22-26);/* Коректируем иконки (в nav криво для иконок) */
-    transition: .3s
-}
-
-.M nav > dl :is(button, a) {
-    display: block;
-    width: 100%;
-    font-size: var(---med-B-20-22-26);/* Коректируем иконки (в nav криво для иконок) */
-}
-.M nav > dl :is(button, a) b {
-    left: 0;/* Для Убераем текст */
-    margin-left: .4375em/* 7 */
-}
-
-body:not(.B-stop) .M:not(.M-X) nav > dl :is(button, a):not([disabled]):hover p {/* Когда меню открыто подсветим иконку */
-    opacity: 1;
-    ---but-C-bg: var(--C1-50);
-}
-
-.M nav > dl :is(button, a).nM0 {/* 0~> Нажатый button */
-    ---but-C: var(--B-C);
-    ---but-C-bg: var(--C);
-}
-
-            /* ▿▿▿ Закрыто .M-X ▿▿▿ *//* #region */
-.M-X nav > dl,
-.M-X nav > dl :is(button, a) {
-    width: 1em;/* Под размер иконки */
-}
-.M-X nav > dl :is(button, a) b {/* Убераем текст */
-    left: -17rem
-}
-            /* ▵▵▵ Закрыто .M-X ▵▵▵ *//* #endregion */
-
-            /* ▿▿▿ animation Поивление ▿▿▿ *//* #region */
-.M nav > dl :is(button, a) p {
-    animation: a-360 1s cubic-bezier(.18,.89,.32,1.28)
-}
-            /* ▵▵▵ animation Поивление ▵▵▵ *//* #endregion */
-        /* 🠕🠕🠕 dl button 🠕🠕🠕 *//* #endregion */
-    /* ⮝⮝⮝ .M nav ⮝⮝⮝ *//* #endregion */
-
-    /* ⮟⮟⮟ .Mk Разделы ⮟⮟⮟ *//* #region */
-        /* 🠗🠗🠗 ! 🠗🠗🠗 *//* #region */
-.Mk {
-    margin: 0 0 0 .7rem;/* 11.2 */
-    padding: 0 0 0 1.2rem;/* 19.2 */
-    border-left: 1px solid var(--lin5-3);
-    font-size: var(---med-B-12-14-16)
-}
-
-.M.M-X .Mk {
-    display: none
-}
-
-.MkS {
-    display: none;
-    left: 5px;
-    padding-right: 3px;
-    border-right: 1px dashed var(--lin5-3);
-    --B-C: var(--C) /* button color */
-}
-        /* 🠕🠕🠕 ! 🠕🠕🠕 *//* #endregion */
-
-        /* 🠗🠗🠗 Открыть/Закрыть ✔ 🠗🠗🠗 *//* #region */
-.Mk > dl {
-    position: absolute;
-    top: -1.63rem;
-    right: 2px;
-    display: flex
-}
-.Mk > dl button {
-    font-size: var(---med-B-16-18-20);
-    ---but-C-bg: var(--C)
-}
-.Mk > dl .B-I-hidV1 {/* Закрыть */
-    ---but-C-bg: var(--bg0-1);
-}
-        /* 🠕🠕🠕 Открыть/Закрыть ✔ 🠕🠕🠕 *//* #endregion */
-
-        /* 🠗🠗🠗 .MkS Список 🠗🠗🠗 *//* #region */
-            /* ▿▿▿ button/a ▿▿▿ *//* #region */
-.MkS :is(button, a) {
-    display: block;
-    padding: 3px 0;
-    width: 100%;
-    text-align: left;
-}
-.MkS :is(button, a):not(:last-child) {
-    border-bottom: 1px solid;
-    border-image: var(--lin-bri-5-2);
-}
-
-body:not(.B-stop) .MkS :is(button, a):not([disabled]):hover {
-    background: var(--bg1-lg1);
-}
-
-.MkS :is(button, a).nM1 b:first-child {/* + Нажатый button/a */
-    color: var(--c1-1);
-}
-
-body:not(.B-stop) .MkS :is(button, a):not([disabled]):hover::before {
-    content: '•';
-    position: absolute;
-    left: -.9375rem;
-    top: .125rem;
-    color: var(--c1-1);
-    transform: scale(0);
-    animation: MrSt .3s forwards
-}
-@keyframes MrSt {
-    50% {
-        color: var(--C);
-        transform: scale(1.5)
-    }
-    100% {
-        transform: scale(1)
-    }
-}
-            /* ▵▵▵ button/a ▵▵▵ *//* #endregion */
-
-            /* ▿▿▿ b ▿▿▿ *//* #region */
-.MkS b:nth-child(2) {
-    display: block;
-    top: 4px;
-    color: var(--c5-2);
-    font-size: .8em;
-    font-weight: 500;
-    font-style: italic;
-    text-align: right;
-    padding: 0 5px 0 9px
-}
-            /* ▵▵▵ b ▵▵▵ *//* #endregion */
-        /* 🠕🠕🠕 .MkS Список 🠕🠕🠕 *//* #endregion */
-    /* ⮝⮝⮝ .Mk Разделы ⮝⮝⮝ *//* #endregion */
-
-    /* ⮟⮟⮟ Отправить отзыв .Mb ⮟⮟⮟ *//* #region */
-.Mb {
-    display: none;
-    --B-C: var(--C);/* button */
-    font-size: var(---med-B-12-14-16);
-    transition: .3s
-}
-
-.Mb p {
-    margin: 10px 0;
-    font-size: 83.4%;/* 13.35 15 16.68 */
-    color: #666
-}
-    /* ⮝⮝⮝ Отправить отзыв .Mb ⮝⮝⮝ *//* #endregion */
-
-    /* ⮟⮟⮟ Закрыто .M-X ⮟⮟⮟ *//* #region */
-.M-X {
-    ---M-w: var(---med0-0, 4.1rem);/* Скрыть || Показать 0 65 73 */
-    height: 100%;/* Для точности (корекция полосы прокрутки) */
-}
-    /* ⮝⮝⮝ Закрыто .M-X ⮝⮝⮝ *//* #endregion */
-/* 🢁🢁🢁 Окно Меню 🢁🢁🢁 *//* #endregion *
-/

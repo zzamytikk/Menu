@@ -33,8 +33,7 @@
         <nav>
           <div>
             <a href="/publ/">Каталог</a>
-            <a href="/news/">Новости</a>
-            
+            <a href="/news/" class="nM1">Новости</a>
             <a href="">Елабуга</a>
             <a href="">Файлы судьбы</a>
             <!--
@@ -189,9 +188,10 @@
       //$('.zMenu').addClass('menuBac');
       
       $('#BmenuA').on('click', () => { //Добавим A +50
-        if(!$('.zMenu nav a').eq(7)[0]) {//Добавим
+        
+        if(!$('.zMenu nav a').eq(3)[0]) {//Добавим
           $(zMenu.id + ' nav > div')
-            .html(`<a href="">Елабуга</a>
+            .append(`<a href="">Елабуга</a>
               <a href="">Каталоги</a>
               <a href="">Файлы судьбы</a>
               <a href="">Чпокальная</a>

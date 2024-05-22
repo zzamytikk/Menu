@@ -11,6 +11,7 @@ var zMenu = {//Меню
     $(O.id+'B .B-Ix-M').on('click', () => O.X(O));
 
     O.pro(O, 1);//Стандарт/Мобильное проверка
+    O.f.url();//Подсветим <a
   },
   /* zMenu.pro(//Проверка Стандарт/Мобильное
        zMenu,//Сократим путь
@@ -129,6 +130,25 @@ var zMenu = {//Меню
         })
         .observe($('html')[0], {});//Передаем элемент и настройки в наблюдатель
       }
+    },
+    /* 
+    
+       <a href="/publ/"  По url www.ok.rr/publ/
+       <a href="?r=publ" По url www.ok.rr?r=publ
+    */
+    url: () => {//Подсветим <a
+      let u = top.location;
+      /* 
+        p: decodeURI(a.pathname + a.search + a.hash),  //• Полный путь (Без домена) /elda.html?r=1&x=5#truljalja || ''
+        
+        H: decodeURI(a.pathname),                      //• Путь к странице /elda.html || ''
+        s: decodeURI(a.search),                        //• Переменные ?r=1&x=5 || ''
+        h: decodeURI(a.hash)                           //• #truljalja || ''
+      */
+      console.debug(u);
+      
+      
+      
     }
   },
   //x:0,//Мобильное меню 0=Закрыто, 1=Открыто
