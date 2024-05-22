@@ -132,23 +132,32 @@ var zMenu = {//Меню
       }
     },
     /* 
-    
        <a href="/publ/"  По url www.ok.rr/publ/
        <a href="?r=publ" По url www.ok.rr?r=publ
     */
     url: () => {//Подсветим <a
-      let u = top.location;
+      let u = top.location,
+        U=decodeURI(u.pathname + u.search);//Полный путь (Без домена) /elda.html?r=1&x=5 || ''
       /* 
         p: decodeURI(a.pathname + a.search + a.hash),  //• Полный путь (Без домена) /elda.html?r=1&x=5#truljalja || ''
-        
+
         H: decodeURI(a.pathname),                      //• Путь к странице /elda.html || ''
         s: decodeURI(a.search),                        //• Переменные ?r=1&x=5 || ''
         h: decodeURI(a.hash)                           //• #truljalja || ''
       */
-      console.debug(u);
       
-      
-      
+      $('.zMenu nav>div a').each((i, e) => {//Перебераем <a
+        i = $(e).attr('href');
+
+        console.debug(
+         '"'+ U+'".indexOf('+i+') => '+
+          '['+U.indexOf(i)+']' +'> -1'
+        );
+        if (i && U.indexOf(i) > -1) {//Не пусто && Совпало
+          $(e).addClass('nM1');
+          return false//Остановим
+        }
+      });
     }
   },
   //x:0,//Мобильное меню 0=Закрыто, 1=Открыто
