@@ -141,7 +141,7 @@
      <a class="B-Ix-X"><p><s></s><s></s></p></a>
    </div>
    
-   <h4 class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Презентация:</b></h4> 
+   <h4 class="hr-n1 hr-L all-c7"><b>Презентация:</b></h4> 
    
    <p class="ram-V2 gI-inf all-c1">Меню — набор ссылок на другие страницы сайта, либо на разделы одной страницы. Каждая ссылка — пункт меню. Меню необходимо для навигации: перехода между страницами или между разделами одной страницы. Меню должно помогать посетителю быстро найти необходимую информацию.</p>
    <p class="ram-V2 gI-inf all-c2">Меню Горизонтальное/Вертикальное с подсветкой открытого раздела по урл. Авто определение горизонтально или вертикально. Под светлый или тёмный сайт.</p>
@@ -150,15 +150,40 @@
     <pre class="ram-n0 all-c5" data-ram-zag="HTML" id="cod"><code class="v-BG0">
     &lt;!-- Добавить в &lt;head>..&lt;/head>: -->
     &lt;script src="https://code.jquery.com/jquery-3.7.1.min.js" defer>&lt;/script><!-- Библиотека jQuery -->
-    &lt;link href="https://zam.usite.pro/db/publ/infOknoMenu/1-0-0/m.css" rel="stylesheet"><!-- Вид `Инфо-Подсказки` -->
-    &lt;script src="https://zam.usite.pro/db/publ/infOknoMenu/1-0-0/m.js" defer>&lt;/script><!-- Мозг `Инфо-Подсказки` -->
+    &lt;link href="https://zam.usite.pro/db/publ/zMenu/1-0-0/m.css" rel="stylesheet"><!-- Вид `Меню` -->
+    &lt;script src="https://zam.usite.pro/db/publ/zMenu/1-0-0/m.js" defer>&lt;/script><!-- Мозг `Меню` -->
     </code></pre>
     
-    <b style="color:red">►</b> Исходники: <a href="https://github.com/zzamytikk/okno_inf_menu/tree/main/infOknoMenu/1-0-0" target="_blank">css</a>
+    <b style="color:red">►</b> Исходники: <a href="https://github.com/zzamytikk/Menu/tree/main/zMenu/1-0-0" target="_blank">css</a>
      
-    <h4 class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Примеры вывода смс:</b></h4>
-     
-   
+    <h4 class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Для запуска меню:</b></h4>
+    <!-- HTML пример -->
+    <pre class="ram-n0 all-c5" data-ram-zag="HTML" id="cod"><code class="v-BG0">
+    &lt;!-- Добавить в &lt;body>..&lt;/body>: -->
+    &lt;header class="zMenu">
+    &#8195;&#8195;&lt;div class="zMenuF">
+    &#8195;&#8195;&#8195;&#8195;&lt;div class="zMenuL">&lt;a href="/" title="Главная">Лого&lt;/a>&lt;/div>
+    &#8195;&#8195;&#8195;&#8195;&lt;div>
+    &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;nav>
+    &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;div>
+    &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;a href="/publ/">Каталог&lt;/a>
+    &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;a href="/gl/">Новости&lt;/a>
+    &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;/div>
+    &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;/nav>
+    &#8195;&#8195;&#8195;&#8195;&lt;/div>
+    &#8195;&#8195;&#8195;&#8195;&lt;div class="zMenuB">
+    &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;!-- Можно добавить свои button icon -->
+    &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;button class="B-Ix-M B-L" disabled>&lt;p>&lt;s>&lt;/s>&lt;s>&lt;/s>&lt;/p>&lt;/button>
+    &#8195;&#8195;&#8195;&#8195;&lt;/div>
+    &#8195;&#8195;&lt;/div>
+    &lt;/header>
+    
+    &lt;script>
+    &#8195;&#8195;document.addEventListener('DOMContentLoaded', () => {
+    &#8195;&#8195;&#8195;&#8195;zMenu.$();//★ Запускаем Меню
+    &#8195;&#8195;});
+    &lt;/script>
+    </code></pre>
   </main>
   <footer></footer>
 
@@ -171,7 +196,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       gl.$();//Запуск инструментов (bg,resize,menu...)
       z.z.Start.$();
-      zMenu.$();//★ Меню
+      zMenu.$();//★ Запускаем Меню
       
       let m={
         w: () => {//Смотрим размеры

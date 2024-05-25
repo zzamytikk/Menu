@@ -1,2 +1,0 @@
-👌ad.js вид на чёрном фоне text-shadow:0 0 3px #fff;
-👌

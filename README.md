@@ -3,4 +3,4 @@
  • m. (Сокращённые)<br>
  • ok. (Для редактирования)
 <br><br>
-&#128279; https://zam.usite.pro/publ/???
+&#128279; https://zam.usite.pro/publ/3-1-0-3
