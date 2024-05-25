@@ -61,8 +61,8 @@ var zMenu = {//Меню
          
         if (O.f.w(O)) {//Меню не помещается! Делаем мобильную версию
           //console.debug('pro();','Меню не помещается! Делаем мобильную версию');
-          H.addClass('zMenuX');//header
-          B.removeClass('B-L').removeAttr('disabled');//button
+          H.addClass('zMenuX');//header меню мобил
+          B.removeClass('B-L').removeAttr('disabled');//button уберём загрузку
         } else {//Меню горизонтально
           //console.debug('pro();','Меню горизонтально! Вернём right: 0');
           D.css('right', 0);//div Вернём окно
@@ -149,10 +149,7 @@ var zMenu = {//Меню
       $('.zMenu nav>div a').each((i, e) => {//Перебераем <a
         i = $(e).attr('href');
 
-        console.debug(
-         '"'+ U+'".indexOf('+i+') => '+
-          '['+U.indexOf(i)+']' +'> -1'
-        );
+        //console.debug('"'+ U+'".indexOf('+i+') => ['+U.indexOf(i)+']' +'> -1');
         if (i && U.indexOf(i) > -1) {//Не пусто && Совпало
           $(e).addClass('nM1');
           return false//Остановим
