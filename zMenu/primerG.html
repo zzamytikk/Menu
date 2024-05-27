@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Пример Вертикального меню</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+  <link href="https://zam.usite.pro/db/publ/zMenu/1-0-0/m.css" rel="stylesheet">
+  <script src="https://zam.usite.pro/db/publ/zMenu/1-0-0/m.js" defer></script>
+</head>
+<body style="margin:0;">
+  <header class="zMenu">
+      <div class="zMenuF">
+        <div class="zMenuL"><a href="/" title="Главная">Лого</a></div>
+        <div>
+          <nav>
+            <div>
+              <a href="/gl/">Новости</a>
+              <a href="?r=file">Файлы</a>
+            </div>
+          </nav>
+        </div>
+        <div class="zMenuB">
+          <!-- Можно добавить свои button icon -->
+          <button class="B-I-src"><p><s></s></p></button>
+          <button class="B-Ix-M B-L" disabled><p><s></s><s></s></p></button>
+        </div>
+      </div>
+    </header>
+    
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      zMenu.$();//★ Запускаем Меню
+    });
+  </script>
+</body>
+</html>

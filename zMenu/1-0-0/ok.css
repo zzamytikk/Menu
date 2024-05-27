@@ -166,7 +166,7 @@
     }
 }
 
-.zMenuX nav a.nM1::after {/* Посветим нажатую кнопку раздела */
+.zMenuX nav a.nM1::after {/* Посветим .B-Ix-X кнопку раздела */
   content: '•';
   color: var(--Mc1-1);
 }
@@ -306,6 +306,7 @@
   top: 0; left: 0;/* Для transition: .7s */
   width: .8em;
   height: .07em;
+  border: 1px solid var(--B-C);
   background: var(--B-C);
   transform: translate(-50%, -50%);/* коректируем */
   transition: .7s,/* для красивой смены кнопок .B-Ix-M ☰ => ✘ .B-Ix-X */
@@ -348,7 +349,25 @@
   height: 0;
   border: 0;
 }
-    /* ✦✦ ✘ .B-Ix-X ✦✦ *//* #endregion */        
+    /* ✦✦ ✘ .B-Ix-X ✦✦ *//* #endregion */
+
+    /* ✦✦ Поиск .B-I-src ✦✦ *//* #region */
+.B-I-src s::before {/* .zMenu Повышаем приоритет */
+    top: -.07em;
+    left: -.07em;
+    width: .7em;
+    height: .7em;
+    border-width: 2px;
+    border-radius: 50%;
+    background: #0000;
+}
+.B-I-src s::after {
+    top: .25em;
+    left: .25em;
+    width: .35em;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+    /* ✦✦ Поиск .B-I-src ✦✦ *//* #endregion */
 /* ✦ button.B-I(x) p,s icon ✦ *//* #endregion */
 
 /* ✦ .Obg Задний фон ✦ *//* #region */

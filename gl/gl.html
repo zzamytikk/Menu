@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Окно ✓ Плавное поивление `Инфо-Меню`</title>
+  <title>Окно ✓ Меню - Горизонтальное/Вертикальное</title>
   <style>
     @import url("https://fonts.googleapis.com/css?family=Material+Icons|Comfortaa|Istok+Web:400,700&amp;subset=cyrillic");
   </style>
@@ -88,7 +88,8 @@
         </nav>
       </div>
       <div class="zMenuB">
-        <!-- Можно добавить свои button icon -->
+        <!-- Тут можно добавить свои button icon -->
+        <button class="B-I-src"><p><s></s></p></button>
         <button class="B-Ix-M B-L" disabled><p><s></s><s></s></p></button>
       </div>
     </div>
@@ -143,11 +144,17 @@
    
    <h4 class="hr-n1 hr-L all-c7"><b>Презентация:</b></h4> 
    <!-- ••• Презентация НАЧАЛО: ••• -->
-   <link href="https://zam.usite.pro/db/publ/zMenu/1-0-0/m.css" rel="stylesheet">
-   <script src="https://zam.usite.pro/db/publ/zMenu/1-0-0/m.js" defer></script>
+   <fieldset class="all-c1">
+     <legend>Пример меню</legend>
+     <h4 class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Горизонтально:</b></h4>
+     <iframe class="ifram" src="/zMenu/primerG.html" frameborder="0" style="height:1.5em"></iframe>
+    
+     <h4 class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Вертикально:</b></h4>
+     <iframe class="ifram" src="/zMenu/primerV.html" frameborder="0"></iframe>
+  </fieldset>
    
    <p class="ram-V2 gI-inf all-c1">Меню — набор ссылок на другие страницы сайта, либо на разделы одной страницы. Каждая ссылка — пункт меню. Меню необходимо для навигации: перехода между страницами или между разделами одной страницы. Меню должно помогать посетителю быстро найти необходимую информацию.</p>
-   <p class="ram-V2 gI-inf all-c2">Меню Горизонтальное/Вертикальное с подсветкой открытого раздела по урл. Авто определение меню горизонтально или вертикально. Под светлый или тёмный сайт.</p>
+   <p class="ram-V2 gI-inf all-c2">Меню с подсветкой открытого раздела по урл. Авто определение меню горизонтально или вертикально. Под светлый или тёмный сайт.</p>
    
     <!-- HTML пример -->
     <pre class="ram-n0 all-c5" data-ram-zag="HTML" id="cod"><code class="v-BG0">
@@ -157,7 +164,7 @@
     &lt;script src="https://zam.usite.pro/db/publ/zMenu/1-0-0/m.js" defer>&lt;/script><!-- Мозг `Меню` -->
     </code></pre>
     
-    <b style="color:red">►</b> Исходники: <a href="https://github.com/zzamytikk/Menu/tree/main/zMenu/1-0-0" target="_blank">css</a>
+    <b style="color:red">►</b> Исходники: <a href="https://github.com/zzamytikk/Menu/tree/main/zMenu/1-0-0" target="_blank">css, js</a>
      
     <h4 class="hr-n1 hr-L" style="---hr-Ct: var(--Ct)"><b>Для запуска меню:</b></h4>
     <!-- HTML пример -->
@@ -168,14 +175,15 @@
     &#8195;&#8195;&#8195;&#8195;&lt;div class="zMenuL">&lt;a href="/" title="Главная">Лого&lt;/a>&lt;/div>
     &#8195;&#8195;&#8195;&#8195;&lt;div>
     &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;nav>
-    &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;div>
+    &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;div>&lt;!-- Список меню: -->
     &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;a href="/publ/">Каталог&lt;/a>
     &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;a href="/gl/">Новости&lt;/a>
+    &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;a href="?r=file">Файлы&lt;/a>
     &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;/div>
     &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;/nav>
     &#8195;&#8195;&#8195;&#8195;&lt;/div>
     &#8195;&#8195;&#8195;&#8195;&lt;div class="zMenuB">
-    &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;!-- Можно добавить свои button icon -->
+    &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;!-- Тут можно добавить свои button icon -->
     &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&lt;button class="B-Ix-M B-L" disabled>&lt;p>&lt;s>&lt;/s>&lt;s>&lt;/s>&lt;/p>&lt;/button>
     &#8195;&#8195;&#8195;&#8195;&lt;/div>
     &#8195;&#8195;&lt;/div>
@@ -310,9 +318,9 @@
 </html>
 <!--
 
-    <fieldset>
-        <legend>Панель управления</legend>
-        текст
+    <fieldset class="all-c4">
+      <legend>Панель управления</legend>
+      текст
     </fieldset>
     &nbsp;	Неразрывный пробел
     &#8194;	Узкий пробел (еn-шириной в букву n)

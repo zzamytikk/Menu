@@ -26,7 +26,7 @@ var zMenu = {//Меню
     let H=$(O.id),//header
       N=H.find('nav'),//nav
       D=N.children('div'),//div Окно
-      B=$('.zMenuB').find('.B-Ix-M, .B-Ix-X');//button
+      B=H.find('.zMenuB').find('.B-Ix-M, .B-Ix-X');//button
     
     if(x){//Первый запуск
       //console.debug('pro();','Первый запуск!');
@@ -159,23 +159,24 @@ var zMenu = {//Меню
   },
   //x:0,//Мобильное меню 0=Закрыто, 1=Открыто
   X: O => {//Открыть/Закрыть
-    let x=O.x;//0=Закрыто, 1=Открыто
+    let x=O.x,//0=Закрыто, 1=Открыто
+      H=$(O.id);
     
     //console.debug('pro();', 'Мобильное меню: '+(x?'Откроем':'Закроем')+'! right: '+$(O.id + ' nav>div').css('right'));
     
-    $(O.id + ' nav>div').css('right', //.6s Закрытие окна
+    H.find('nav>div').css('right', //.6s Закрытие окна
       x
         ? '-16em'//Закроем
         : 0//Откроем
     );
     
-    $('.zMenuB').find('.B-Ix-M, .B-Ix-X')
+    H.find('.zMenuB').find('.B-Ix-M, .B-Ix-X')
       .removeClass('B-Ix-' + (x ? 'X' : 'M'))
       .addClass('B-Ix-' + (x ? 'M' : 'X'));
     
     O.f.bg(
       x
-        ? 'zMenu'//† Закрыть задний фон
+        ? 'zMenu'//† id. Закрыть задний фон
         : {//✫ Добавим задний фон
           id: 'body', //* $() куда добавим. (.append(..);)
           i: 'zMenu', //* id Для удаления zMenu.f.bg('string');
