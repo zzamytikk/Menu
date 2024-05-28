@@ -132,12 +132,13 @@ var zMenu = {//Меню
       }
     },
     /* 
-       <a href="/publ/"  По url www.ok.rr/publ/
-       <a href="?r=publ" По url www.ok.rr?r=publ
+      <a href="/publ/"  По url www.ok.rr/publ/
+      <a href="?r=publ" По url www.ok.rr?r=publ
     */
     url: () => {//Подсветим <a
       let u = top.location,
         U=decodeURI(u.pathname + u.search);//Полный путь (Без домена) /elda.html?r=1&x=5 || ''
+
       /* 
         p: decodeURI(a.pathname + a.search + a.hash),  //• Полный путь (Без домена) /elda.html?r=1&x=5#truljalja || ''
 
