@@ -1,4 +1,4 @@
-/*  ✪ https://zam.usite.pro/publ/
+/*  ✪ https://zam.usite.pro/publ/3-1-0-3
     ✫ Версия 1.0.0
     © Copyright Плюшки для сайтов 2024
 */
@@ -11,7 +11,7 @@ var zMenu = {//Меню
     $(O.id+'B .B-Ix-M').on('click', () => O.X(O));
 
     O.pro(O, 1);//Стандарт/Мобильное проверка
-    O.f.url();//Подсветим <a
+    O.f.url(O);//Подсветим <a
   },
   /* zMenu.pro(//Проверка Стандарт/Мобильное
        zMenu,//Сократим путь
@@ -77,7 +77,7 @@ var zMenu = {//Меню
     //zMenu.f.w(zMenu);//Меню не помещается горизонтально
     //return 1
     w:O=>{//width: nav div 'Когда меню не помещается'
-      //console.debug('if('+$(O.id + ' nav > div').eq(0).width()+' >= '+$(O.id+' nav').eq(0).width()+') >= '+($(O.id + ' nav > div').eq(0).width() >= $(O.id+' nav').eq(0).width()));
+      console.debug('if('+$(O.id + ' nav > div').eq(0).width()+' >= '+$(O.id+' nav').eq(0).width()+') >= '+($(O.id + ' nav > div').eq(0).width() >= $(O.id+' nav').eq(0).width()));
       
       if($(O.id + ' nav > div').eq(0).width() >= $(O.id+' nav').eq(0).width()){
         return 1
@@ -134,9 +134,11 @@ var zMenu = {//Меню
     /* 
       <a href="/publ/"  По url www.ok.rr/publ/
       <a href="?r=publ" По url www.ok.rr?r=publ
+      O = zMenu;
     */
-    url: () => {//Подсветим <a
-      let u = top.location,
+    url: O => {//Подсветим <a
+      let a=$(O.id+' nav>div a'),
+        u = top.location,
         U=decodeURI(u.pathname + u.search);//Полный путь (Без домена) /elda.html?r=1&x=5 || ''
 
       /* 
@@ -147,11 +149,12 @@ var zMenu = {//Меню
         h: decodeURI(a.hash)                           //• #truljalja || ''
       */
       
-      $('.zMenu nav>div a').each((i, e) => {//Перебераем <a
+      a.each((i, e) => {//Перебераем <a
         i = $(e).attr('href');
 
         //console.debug('"'+ U+'".indexOf('+i+') => ['+U.indexOf(i)+']' +'> -1');
-        if (i && U.indexOf(i) > -1) {//Не пусто && Совпало
+        if (i && i != '/' && U.indexOf(i) > -1) {//Не пусто && Совпало
+          a.filter('.nM1').removeClass('nM1');
           $(e).addClass('nM1');
           return false//Остановим
         }

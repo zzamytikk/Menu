@@ -1,4 +1,4 @@
-/*  ✪ https://zam.usite.pro/publ/
+/*  ✪ https://zam.usite.pro/publ/3-1-0-3
     ✫ Версия 1.0.0
     © Copyright Плюшки для сайтов 2024
 */
@@ -21,7 +21,7 @@
    
    По умолчанию белый фон!
 */
-.tema9 .zMenu {/* Тёмный */
+.tema9 .zMenu2 {/* Тёмный */
   --bg: #012;  /* background Фон сайта */
   --Ct: #ccc;  /* color текст */
   --c1-1: #afa;/* Кнопка нажата */
@@ -29,14 +29,20 @@
     /* ✦✦ .tema(8-9) Расцветка ✦✦ *//* #endregion */
 
     /* ✦✦ ! header ✦✦ *//* #region */
-.zMenu {z-index: 7;
+.zMenu {/* Для отступа */
+  height:1.5em;
+  transition: height .3s;
+  /*margin-bottom: 1.7em;*/
+}
+    
+.zMenu2 {z-index: 7;
   --Mbg: var(--bg, #fff);    /* background Фон сайта */
   --MCt: var(--Ct, #000);    /* color текст */
   --Mc1-1: var(--c1-1, #0b0);/* Кнопка нажата */
   position: fixed;
   top:0;
   width: 100%;
-  height: 1.5rem;
+  height: 1.5em;
   font: 500 1em Nunito;
   box-shadow: 0 5px 9px -12px #000;
  /* border: 1px solid red;*/
@@ -128,25 +134,29 @@
     /* ✦✦ Список меню ✦✦ *//* #endregion */
 
     /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #region */
+.zMenuX {
+  font-size: 1.5em;
+}
+
 .zMenuX nav > div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   position: fixed;
-  top: 1.5rem;
+  top: 1.5em;
   right: -16em;
   bottom: 0;
   width: 15em;
   max-width: 100vw;/* Не больше размера браузер окна */
   overflow: hidden auto;
   background: var(--Mbg);
-  transition: right .6s;
+  transition: right .6s, width .6s;/* width Для font-size: 1.5em; */
 }
 
         /* ✦✦✦ а Список ✦✦✦ *//* #region */
 .zMenuX nav a {
   width: 100%;
-  padding: 3px 0 3px 16px;
+  padding: 3px 0 3px 1.1em;
 }
 .zMenuX nav a:not(:last-child) {
   border-bottom: 1px solid;
@@ -158,7 +168,8 @@
 
 .zMenuX nav a::after {
   position: absolute;
-  left: 6px;
+  top: 1.5px;
+  left: .35em;
   color: var(--MCt);
 }
 
@@ -180,7 +191,6 @@
   content: '•';
   color: var(--Mc1-1);
 }
-
         /* ✦✦✦ а Список ✦✦✦ *//* #endregion */
     /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #endregion */
 /* ✦ Меню ✦ *//* #endregion */
@@ -371,9 +381,9 @@
     border-radius: 50%;
     background: #0000;
 }
-.B-I-src s::after {
-    top: .25em;
-    left: .25em;
+.B-I-src s::after {/* палка */
+    top: .28em;
+    left: .28em;
     width: .35em;
     transform: translate(-50%, -50%) rotate(45deg);
 }
