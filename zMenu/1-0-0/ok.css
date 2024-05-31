@@ -23,7 +23,7 @@
 */
 .tema9 .zMenu2 {/* Тёмный */
   --bg: #012;  /* background Фон сайта */
-  --Ct: #ccc;  /* color текст */
+  /*--Ct: #ccc;*/  /* color текст */
   --c1-1: #afa;/* Кнопка нажата */
 }
     /* ✦✦ .tema(8-9) Расцветка ✦✦ *//* #endregion */
@@ -33,11 +33,12 @@
   height:1.5em;
   transition: height .3s;
   /*margin-bottom: 1.7em;*/
+  /*border: 1px solid red; */
 }
     
 .zMenu2 {z-index: 7;
   --Mbg: var(--bg, #fff);    /* background Фон сайта */
-  --MCt: var(--Ct, #000);    /* color текст */
+  /*--MCt: var(--Ct, #000);*/    /* color текст */
   --Mc1-1: var(--c1-1, #0b0);/* Кнопка нажата */
   position: fixed;
   top:0;
@@ -45,7 +46,7 @@
   height: 1.5em;
   font: 500 1em Nunito;
   box-shadow: 0 5px 9px -12px #000;
- /* border: 1px solid red;*/
+  /* border: 1px solid red;*/
 }
 
 .zMenuF {
@@ -82,21 +83,23 @@
   padding: 0 14px 0 7px;
 }
 .zMenuL a {
-  top: -2px;
+  display: block;/* Для Первая буква всегда заглавная! */
   cursor: pointer;
   text-decoration: unset;
-  color: var(--Ct);
   color: #fff;
   font-size: 1.2em;
   font-weight: 700;
   background: linear-gradient(90deg, #0000, #8cf9 50%, #0000) 0 99%;
   background-repeat: no-repeat;
   background-size: 100% 1px;
-  text-shadow: 2px 2px #000, 0 1px 7px #888;
+  text-shadow: 0 0 2px #000, 0 1px 7px #888;
   transition: background .3s
 }
 .zMenuL a:hover {
   background-size: 0 1px;
+}
+.zMenuL a::first-letter {/* Первая буква всегда заглавная! */
+  text-transform: uppercase;
 }
     /* ✦✦ Лого ✦✦ *//* #endregion */
 
