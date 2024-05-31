@@ -23,7 +23,7 @@
 */
 .tema9 .zMenu2 {/* Тёмный */
   --bg: #012;  /* background Фон сайта */
-  /*--Ct: #ccc;*/  /* color текст */
+  --Ct: #ccc;  /* color текст, Линия разделения, разделов мобил */
   --c1-1: #afa;/* Кнопка нажата */
 }
     /* ✦✦ .tema(8-9) Расцветка ✦✦ *//* #endregion */
@@ -38,7 +38,7 @@
     
 .zMenu2 {z-index: 7;
   --Mbg: var(--bg, #fff);    /* background Фон сайта */
-  /*--MCt: var(--Ct, #000);*/    /* color текст */
+  --MCt: var(--Ct, #000);    /*  */
   --Mc1-1: var(--c1-1, #0b0);/* Кнопка нажата */
   position: fixed;
   top:0;
