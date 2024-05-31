@@ -331,7 +331,7 @@
   position: absolute;
   top: 0; left: 0;/* Для transition: .7s */
   width: .8em;
-  height: .07em;
+  height:1px;/* em не использовать! (выдаст разную толщину) */
   border: 1px solid var(--B-C);
   background: var(--B-C);
   transform: translate(-50%, -50%);/* коректируем */
