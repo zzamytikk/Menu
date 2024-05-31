@@ -70,10 +70,6 @@
 .zMenuB {/* button icon (Открыть меню, ..) */
   display: inline-flex;/* Выравнивает по центру button */
 }
-.zMenuB [class*="B-Ix-"] {/* Спрятать/Показать button Меню */
-  overflow: hidden;
-  transition: padding .7s, border .7s;
-}
     /* ✦✦ ! header ✦✦ *//* #endregion */
     
     /* ✦✦ Лого ✦✦ *//* #region */
@@ -130,11 +126,18 @@
 .zMenu:not(.zMenuX) nav a.nM1 {/* + Нажатый a */
   opacity: .3;
 }
+    /* ✦✦ Список меню ✦✦ *//* #endregion */
 
+    /* ✦✦ button ✦✦ *//* #region */
 .zMenuB button {
   margin: 0 4px;
 }
-    /* ✦✦ Список меню ✦✦ *//* #endregion */
+
+.zMenuB [class*="B-Ix-"] {/* Спрятать/Показать button Меню */
+  overflow: hidden;
+  transition: padding .7s, margin .7s, .3s;/* Убрать/Показать в js zMenu.pro */
+}
+    /* ✦✦ button ✦✦ *//* #endregion */
 
     /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #region */
 .zMenuX {

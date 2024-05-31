@@ -66,7 +66,7 @@ var zMenu = {//Меню
         } else {//Меню горизонтально
           //console.debug('pro();','Меню горизонтально! Вернём right: 0');
           D.css('right', 0);//div Вернём окно
-          B.css({'padding-left':0, margin:0});//Убераем button
+          B.css({padding:0, margin:0});//Убераем button
         }
   
         N.css({ opacity: 1, 'pointer-events': 'auto' });//div Показываем список
@@ -174,7 +174,7 @@ var zMenu = {//Меню
         : 0//Откроем
     );
     
-    H.find('.zMenuB').find('.B-Ix-M, .B-Ix-X')
+    H.find('.zMenuB').find('.B-Ix-M, .B-Ix-X')//button Открыть/Закрыть
       .removeClass('B-Ix-' + (x ? 'X' : 'M'))
       .addClass('B-Ix-' + (x ? 'M' : 'X'));
     
