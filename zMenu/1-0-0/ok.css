@@ -30,10 +30,11 @@
 
     /* ✦✦ ! header ✦✦ *//* #region */
 .zMenu {/* Для отступа */
-  height:1.5em;
-  transition: height .3s;
-  /*margin-bottom: 1.7em;*/
+  height:1.5em;/* Оставляет отступ с низу для текста в body */
   /*border: 1px solid red; */
+}
+@media (max-width: 768px) {/* до 768 */
+  .zMenu {font-size: 1.5em} /* Увеличим для телефонов */
 }
     
 .zMenu2 {z-index: 7;
@@ -140,10 +141,6 @@
     /* ✦✦ button ✦✦ *//* #endregion */
 
     /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #region */
-.zMenuX {
-  font-size: 1.5em;
-}
-
 .zMenuX nav > div {
   display: flex;
   flex-direction: column;
