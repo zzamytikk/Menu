@@ -171,8 +171,9 @@
 
 .zMenuX nav a::after {
   position: absolute;
-  top: .44em;
-  left: .52em;
+  top: 50%;
+  transform: translateY(-50%);
+  left: .48em;
   width: .3em;
   height: .3em;
   border-radius: 50%;
