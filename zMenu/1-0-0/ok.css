@@ -31,10 +31,10 @@
     /* ✦✦ ! header ✦✦ *//* #region */
 .zMenu {/* Для отступа */
   height:1.5em;/* Оставляет отступ с низу для текста в body */
+  @media (max-width: 768px) {/* до 768 */
+    font-size: 1.5em /* Увеличим для телефонов */
+  }
   /*border: 1px solid red; */
-}
-@media (max-width: 768px) {/* до 768 */
-  .zMenu {font-size: 1.5em} /* Увеличим для телефонов */
 }
     
 .zMenu2 {z-index: 7;
@@ -171,13 +171,16 @@
 
 .zMenuX nav a::after {
   position: absolute;
-  top: 1.5px;
-  left: .35em;
-  color: var(--MCt);
+  top: .44em;
+  left: .52em;
+  width: .3em;
+  height: .3em;
+  border-radius: 50%;
+  background: var(--MCt);
 }
 
 .zMenuX nav a:hover::after {
-  content: '•';
+  content: '';
   opacity: 0;
   animation: MrSt .4s forwards
 }
@@ -191,8 +194,8 @@
 }
 
 .zMenuX nav a.nM1::after {/* Посветим .B-Ix-X кнопку раздела */
-  content: '•';
-  color: var(--Mc1-1);
+  content: '';
+  background: var(--Mc1-1);
 }
         /* ✦✦✦ а Список ✦✦✦ *//* #endregion */
     /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #endregion */
