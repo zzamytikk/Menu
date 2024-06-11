@@ -174,26 +174,28 @@
   top: 50%;
   transform: translateY(-50%);
   left: .48em;
-  width: .3em;
-  height: .3em;
+  width: .25em;
+  height: .25em;
   border-radius: 50%;
   background: var(--MCt);
 }
 
 .zMenuX nav a:hover::after {
   content: '';
+  transform: translateY(-50%) scale(0);
   opacity: 0;
-  animation: MrSt .4s forwards
+  animation: MrSt .3s forwards
 }
 @keyframes MrSt {
     50% {
       opacity: 1;
+      transform: translateY(-50%) scale(1.5);
     }
     100% {
-      opacity: .3;
+      opacity: .6;
+      transform: translateY(-50%) scale(1)
     }
 }
-
 .zMenuX nav a.nM1::after {/* Посветим .B-Ix-X кнопку раздела */
   content: '';
   background: var(--Mc1-1);
