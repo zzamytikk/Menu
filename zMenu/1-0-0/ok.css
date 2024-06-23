@@ -3,7 +3,7 @@
     © Copyright Плюшки для сайтов 2024
 */
 
-.zMenu, .zMenu *, .zMenu *::after, .zMenu *::before {/* Помогает интеграции на любой сайт */
+.zMenu, .zMenu *, .zMenu *::after, .zMenu *::before {/* Помогает интеграции */
   position: relative;
   margin: 0;
   padding: 0;
