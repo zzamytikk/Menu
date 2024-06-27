@@ -31,6 +31,7 @@
     /* ✦✦ ! header ✦✦ *//* #region */
 .zMenu {/* Для отступа */
   height:2em;/* больше 1.5 Оставляет отступ с низу для текста в body */
+  font-size: 1rem;/* html */
   @media (max-width: 768px) {/* до 768 */
     font-size: 1.5em /* Увеличим для телефонов */
   }
