@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
   border: 0;
+  border-radius: 0;
   outline: 0;
   box-sizing: border-box;
   line-height: 1.1;
@@ -84,9 +85,9 @@
   display: block;/* Для Первая буква всегда заглавная! */
   cursor: pointer;
   text-decoration: unset;
-  color: #fff;
   font-size: 1.2em;
   font-weight: 700;
+  color: #fff!important;
   background: linear-gradient(90deg, #0000, #8cf9 50%, #0000) 0 99%;
   background-repeat: no-repeat;
   background-size: 100% 1px;
@@ -205,201 +206,6 @@
     /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #endregion */
 /* ✦ Меню ✦ *//* #endregion */
 
-/* ✦ a, button (.B-L i Загрузка...) ✦ *//* #region */
-/* + 
-  .B-L       - Добавит индикатор загрузки кнопки
-               • <button,a class="B-L" disabled>
-
-  .B-stop    - Блокировка всех кнопок (disabled)
-               • <div class="B-stop">
-                   <button></button>
-                   <a></a>
-                 </div>
-
-  disabled   - Блокировка кнопки
-               • <button,a disabled>
-*/
-    /* ✦✦ ! :hover/disabled/.B-L ✦✦ *//* #region */
-:is(.zMenu nav, .zMenuB) :is(button, a) {/* Отталкиваемся от body font: 14px sans-serif; */
-  --B-C: #59f;/* Цвет */
-  --B-bg: #0000;/* background */
-  display: inline-flex;
-  font: inherit;
-  color: var(--B-C);
-  background: var(--B-bg);
-  cursor: pointer;
-  text-decoration: unset;
-  transition: .3s;
-}
-:is(.zMenu nav, .zMenuB) :is(button, a):not([disabled]):hover,
-:is(.zMenu nav, .zMenuB) .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
-:is(.zMenu nav, .zMenuB) :is(button, a):not(.B-L)[disabled] {/* disabled */
-  opacity: .3;
-}
-/* смартфоны, устройства с сенсорным экраном, с которым работают пальцами */
-@media (hover: none) and (pointer: coarse) {
-  :is(.zMenu nav, .zMenuB) :is(button, a):not([disabled]):hover {/* Отжимает opacity.3 (На телефоне остаёдся гореть после нажатия) */
-    opacity: 1;
-  }
-}
-
-:is(.zMenu nav, .zMenuB) .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
-:is(.zMenu nav, .zMenuB) :is(button, a)[disabled] {/* disabled/Загрузка */
-  /* cursor: default; */
-  pointer-events: none;
-}
-:is(.zMenu nav, .zMenuB) :is(button, a).B-L :is(p, b) {/* Загрузка */
-  opacity: .6;
-}
-    /* ✦✦ ! :hover/disabled/.B-L ✦✦ *//* #endregion */
-    
-    /* ✦✦ .B-L Загрузка... ✦✦ *//* #region */
-        /* ✦✦✦ ! ✦✦✦ *//* #region */
-.B-L[disabled]::before,
-.B-L[disabled]::after {z-index: 1;
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0
-}
-        /* ✦✦✦ ! ✦✦✦ *//* #endregion */
-        
-        /* ✦✦✦ Круг ✦✦✦ *//* #region */
-.B-L::after {/* [disabled] #ddd */
-  width: 1em;
-  height: 1em;
-  border-radius: 50%;
-  border: .1em solid;
-  border-color: red #ddd8 #ddd8 #ddd8;
-  animation: B-360 1.15s cubic-bezier(.45,.05,.55,.95) infinite;
-}
-@keyframes B-360 {/* поворот на 360 */
-    0% {
-      left: 0; top: 0;/* Уберает смешение круга */
-      transform: rotate(360deg);
-    }
-}
-        /* ✦✦✦ Круг ✦✦✦ *//* #endregion */
-    /* ✦✦ .B-L Загрузка... ✦✦ *//* #endregion */
-
-    /* ✦✦ click Отображение нажатия кнопки ✦✦ *//* #region */
-        /* ✦✦✦ ! ✦✦✦ *//* #region */
-:is(.zMenu nav, .zMenuB) :is(button, a):active::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    box-shadow: inset 0 0 #fff, inset 0 0 #000,
-      0 0 3px #fff, 0 0 3px #000;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: click_PL 1s
-}
-@keyframes click_PL {
-    9% {
-        box-shadow: inset 0 0 #fff, inset 0 0 #000,
-          0 0 9px #fff, 0 0 9px #000;
-    }
-}
-        /* ✦✦✦ ! ✦✦✦ *//* #endregion */
-    /* ✦✦ click Отображение нажатия кнопки ✦✦ *//* #endregion */
-/* ✦ a, button (.B-L i Загрузка...) ✦ *//* #endregion */
-
-/* ✦ button.B-I(x) p,s icon ✦ *//* #region */
-    /* ✦✦ ! p,s ✦✦ *//* #region */
-[class*="B-I"] {
-  height: 1em;
-  padding-left: 1em;
-}
-
-[class*="B-I"] p { /* icon */
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1em;
-  height: 1em;
-  display: flex;/* Центруем */
-  justify-content: center;
-  align-items: center;
-  font: inherit;
-}
-
-[class*="B-I"] s {
-  transform: translate(0, 0);/* Для корекции отображения */
-}
-[class*="B-I"] s::before,
-[class*="B-I"] s::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;/* Для transition: .7s */
-  width: .8em;
-  height:1px;/* em не использовать! (выдаст разную толщину) */
-  border: 1px solid var(--B-C);
-  background: var(--B-C);
-  transform: translate(-50%, -50%);/* коректируем */
-  transition: .7s,/* для красивой смены кнопок .B-Ix-M ☰ => ✘ .B-Ix-X */
-    background .5s, border-color .5s; /* для плавной смены цвета при наведении мышкой */
-}
-[class*="B-Ix"] s:last-child::before {/* Удаляем в последней s::before */
-  content: unset;
-}
-    /* ✦✦ ! p,s ✦✦ *//* #endregion */
-        
-    /* ✦✦ ☰ .B-Ix-M ✦✦ *//* #region */
-/** Заменяется => ✘ .B-Ix-X (Для анимации) */
-.B-Ix-M s::before {
-  top: -.3em;
-}
-.B-Ix-M s::after {
-  top: .3em;
-}
-.B-Ix-M s:nth-child(2)::after {
-  top: 0;
-}
-    /* ✦✦ ☰ .B-Ix-M ✦✦ *//* #endregion */
-        
-    /* ✦✦ ✘ .B-Ix-X ✦✦ *//* #region */
-[class*="B-Ix-X"] p {/* красный Для всех Х */
-  --B-C: #f66;
-}
-
-/** Заменяется => .B-Ix-M (Для анимации) */
-.B-Ix-X s::before {/* .B-I-X Для просто кнопки X без анимации на ☰ */
-  transform: translate(-50%, -50%) rotate(45deg)
-}
-.B-Ix-X s::after {
-  transform: translate(-50%, -50%) rotate(-45deg)
-}
-.B-Ix-X s:nth-child(2)::after {/* Для анимации переключения на ☰ */
-  opacity: 0;
-  left: 1em;
-  width: 0;/* Уберём нажатие за пределами button */
-  height: 0;
-  border: 0;
-}
-    /* ✦✦ ✘ .B-Ix-X ✦✦ *//* #endregion */
-
-    /* ✦✦ Поиск .B-I-src ✦✦ *//* #region */
-.B-I-src s::before {/* .zMenu Повышаем приоритет */
-    top: -.07em;
-    left: -.07em;
-    width: .7em;
-    height: .7em;
-    border-width: 2px;
-    border-radius: 50%;
-    background: #0000;
-}
-.B-I-src s::after {/* палка */
-    top: .28em;
-    left: .28em;
-    width: .35em;
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-    /* ✦✦ Поиск .B-I-src ✦✦ *//* #endregion */
-/* ✦ button.B-I(x) p,s icon ✦ *//* #endregion */
-
 /* ✦ .Obg Задний фон ✦ *//* #region */
 .Obg {z-index: 6; opacity: 0;
     position:fixed;
@@ -418,3 +224,240 @@
     }
 }
 /* ✦ .Obg Задний фон ✦ *//* #endregion */
+
+/* ✦ a, button (.B-L Загрузка...) ✦ *//* #region */
+/* + 
+  .B-L       - Добавит индикатор загрузки кнопки
+               • <button,a class="B-L" disabled>
+                 ° ::after
+                 
+  button::before - Для разного:
+                   • .B-I => Для выравнивания всех в 1 ряд, когда иконка без текста
+
+  .B-stop    - Блокировка всех кнопок (disabled)
+               • <div class="B-stop">
+                   <button></button>
+                   <a></a>
+                 </div>
+
+  disabled   - Блокировка кнопки
+               • <button,a disabled>
+  <button>
+    <p><s>   - Иконки свои  <button.B-I(x)-
+    <p>      - Иконки гоогл <button.B-Ii-
+    <b>      - Текста   <button><b>текст</b> (Определяет дизайн click и загрузки)
+    <i>      - Загрузка/Отображение клика
+               • ::after  Загрузка <button.B-L><i>
+               • ::before Клик
+  </button>
+*/
+    /* ✦✦ ! :hover/disabled/.B-L ✦✦ *//* #region */
+.zMenu :is(button, a) {
+  --B-C: #59f;/* Цвет */
+  --B-I-C: var(--B-C);/* Свой цвет иконки <button style="--B-I-C: #fff" */
+  display: inline-flex;
+  align-items: center;/* Для выравнивания по Центру b */
+  padding: 0 2px;
+  height: 1.4em;
+  font: inherit;
+  /*font-size: 1em;*/
+  color: var(--B-C);
+  background: #0000;
+  cursor: pointer;
+  text-decoration: unset;
+  transition: .3s;
+}
+
+.zMenu :is(button, a):not([disabled]):hover :is(p,b),/* Затемнение при наведении мышки */
+
+.zMenu .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
+.zMenu :is(button, a):not(.B-L)[disabled] {/* disabled */
+  opacity: .3;
+}
+/* смартфоны, устройства с сенсорным экраном, с которым работают пальцами */
+@media (hover: none) and (pointer: coarse) {
+  .zMenu :is(button, a):not([disabled]):hover {/* Отжимает opacity.3 (На телефоне остаёдся гореть после нажатия) */
+    opacity: 1;
+  }
+}
+
+.zMenu .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
+.zMenu :is(button, a)[disabled] {/* disabled/Загрузка */
+  /* cursor: default; */
+  pointer-events: none;/* Убераем возможнасть нажать */
+}
+.zMenu :is(button, a).B-L :is(p, b) {/* Загрузка */
+  opacity: .6;
+}
+    /* ✦✦ ! :hover/disabled/.B-L ✦✦ *//* #endregion */
+
+    /* ✦✦ .B-L Загрузка... ✦✦ *//* #region */
+        /* ✦✦✦ ! ✦✦✦ *//* #region */
+/*.B-L[disabled]::before,*/
+.zMenu .B-L[disabled]::after {z-index: 1;
+  content: '';
+  position: absolute;
+}
+        /* ✦✦✦ ! ✦✦✦ *//* #endregion */
+
+        /* ✦✦✦ Для всех ✦✦✦ *//* #endregion */
+.zMenu .B-L::after {
+  left: 0;
+  bottom:0;
+  width: 0;
+  height: 1px;
+  background: red;
+  animation: B-vse 1.15s cubic-bezier(.45,.05,.55,.95) infinite;
+}
+@keyframes B-vse {/* поворот на 360 */
+    50% {
+      width: 100%;
+    }
+    100% {
+      left: unset;
+      right: 0;
+      width: 0;
+    }
+}
+        /* ✦✦✦ Для всех ✦✦✦ *//* #region */
+    /* ✦✦ .B-L Загрузка... ✦✦ *//* #endregion */
+
+    /* ✦✦ click Отображение нажатия кнопки ✦✦ *//* #region */
+        /* ✦✦✦ ! ✦✦✦ *//* #region */
+.zMenu :is(button, a):not([disabled]):active::before {z-index: -1;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+ 
+    box-shadow: inset 0 0 3px #ef06;
+    outline: 1px solid #ef06;
+
+    pointer-events: none;
+    animation: click_PL 1s
+}
+@keyframes click_PL {
+    20% {
+      box-shadow: inset 0 0 5px 5px #ef06;
+      outline-width: 7px;
+    }
+}
+/* Тест:
+button,a::before {
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px 5px #ef04;
+  
+  outline: 1px solid #ef04;
+  outline-width: 7px;
+}*/
+        /* ✦✦✦ ! ✦✦✦ *//* #endregion */
+    /* ✦✦ click Отображение нажатия кнопки ✦✦ *//* #endregion */
+/* ✦ a, button (.B-L i Загрузка...) ✦ *//* #endregion */
+
+/* ✦ icon (Свои/google) ✦ *//* #region */
+    /* ✦✦ ! ✦✦ *//* #region */
+.zMenu [class*="B-I"] {
+  padding-left: 1em;
+}
+.zMenu [class*="B-I"]::before {/* Для выравнивания всех в 1 ряд, когда иконка без текста (Автор zam) */
+  content: 'z';
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.zMenu [class*="B-I"] p { /* icon */
+  display: inline-flex;/* Центруем для <s */
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  /*top: 50%;
+  transform: translate(0, -50%);*/
+  width: 1em;
+  height: 1em;
+}
+    /* ✦✦ ! ✦✦ *//* #endregion */
+/* ✦ icon (Свои/google) ✦ *//* #endregion */
+
+/* ✦ button.B-I(x) p,s icon ✦ *//* #region */
+    /* ✦✦ ! p,s ✦✦ *//* #region */
+.zMenu [class*="B-I"] s {
+  transform: translate(0, 0);/* Для корекции отображения */
+}
+.zMenu [class*="B-I"] s::before,
+.zMenu [class*="B-I"] s::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;/* Для transition: .7s */
+  width: .8em;
+  height: 1px;/* em не использовать! (выдаст разную толщину) */
+  border: 1px solid var(--B-I-C);
+  background: var(--B-I-C);
+  transform: translate(-50%, -50%);/* коректируем */
+  transition: .7s,/* для красивой смены кнопок .B-Ix-M ☰ => ✘ .B-Ix-X */
+    background .5s, border-color .5s; /* для плавной смены цвета при наведении мышкой */
+}
+.zMenu [class*="B-Ix"] s:last-child::before {/* Удаляем в последней s::before */
+  content: unset;
+}
+    /* ✦✦ ! p,s ✦✦ *//* #endregion */
+        
+    /* ✦✦ ☰ .B-Ix-M ✦✦ *//* #region */
+/** Заменяется => ✘ .B-Ix-X (Для анимации) */
+.zMenu .B-Ix-M s::before {
+  top: -.3em;
+}
+.zMenu .B-Ix-M s::after {
+  top: .3em;
+}
+.zMenu .B-Ix-M s:nth-child(2)::after {
+  top: 0;
+}
+    /* ✦✦ ☰ .B-Ix-M ✦✦ *//* #endregion */
+        
+    /* ✦✦ ✘ .B-Ix-X ✦✦ *//* #region */
+.zMenu [class*="B-Ix-X"] p {/* красный Для всех Х */
+  --B-I-C: #f66;
+}
+
+/** Заменяется => .B-Ix-M (Для анимации) */
+.zMenu .B-Ix-X s::before {/* .B-I-X Для просто кнопки X без анимации на ☰ */
+  width: .9em;
+  transform: translate(-50%, -50%) rotate(45deg)
+}
+.zMenu .B-Ix-X s::after {
+  width: .9em;
+  transform: translate(-50%, -50%) rotate(-45deg)
+}
+.zMenu .B-Ix-X s:nth-child(2)::after {/* Для анимации переключения на ☰ */
+  opacity: 0;
+  left: 1em;
+  width: 0;/* Уберём нажатие за пределами button */
+  height: 0;
+  border: 0;
+}
+    /* ✦✦ ✘ .B-Ix-X ✦✦ *//* #endregion */
+
+    /* ✦✦ Поиск .B-I-src ✦✦ *//* #region */
+.zMenu .B-I-src s::before {
+    top: -.07em;
+    left: -.07em;
+    width: .7em;
+    height: .7em;
+    border-width: 2px;
+    border-radius: 50%;
+    background: #0000;
+}
+.zMenu .B-I-src s::after {/* палка */
+    top: .28em;
+    left: .28em;
+    width: .35em;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+    /* ✦✦ Поиск .B-I-src ✦✦ *//* #endregion */
+/* ✦ button.B-I(x) p,s icon ✦ *//* #endregion */
