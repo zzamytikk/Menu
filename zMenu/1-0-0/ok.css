@@ -15,225 +15,14 @@
   font-size: inherit;
 }
 
-/* ✦ Меню ✦ *//* #region */
-    /* ✦✦ .tema(8-9) Расцветка ✦✦ *//* #region */
-/* • Для тёмного фона добавим class
-      в: <body class="tema9"
-   
-   По умолчанию белый фон!
-*/
-.temaT .zMenu2 {/* Тёмный */
-  --bg: #012;  /* background Фон сайта */
-  --Ct: #ccc;  /* color текст, Линия разделения, разделов мобил */
-  --c1-1: #afa;/* Кнопка нажата */
-}
-    /* ✦✦ .tema(8-9) Расцветка ✦✦ *//* #endregion */
-
-    /* ✦✦ ! header ✦✦ *//* #region */
-.zMenu {/* Для отступа */
-  height:2em;/* больше 1.5 Оставляет отступ с низу для текста в body */
-  font-size: 1rem;/* html */
-  @media (max-width: 768px) {/* до 768 */
-    font-size: 1.5em /* Увеличим для телефонов */
-  }
-  /*border: 1px solid red; */
-}
-    
-.zMenu2 {z-index: 7;
-  --Mbg: var(--bg, #fff);    /* background Фон сайта */
-  --MCt: var(--Ct, #000);    /*  */
-  --Mc1-1: var(--c1-1, #0b0);/* Кнопка нажата */
-  position: fixed;
-  top:0;
-  width: 100%;
-  height: 1.5em;
-  font: 500 1em Nunito;
-  box-shadow: 0 5px 9px -12px #000;
-  /* border: 1px solid red;*/
-}
-
-.zMenuF {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  margin: 0 auto;
-  padding:0 7px;
-  width: 100%;
-  max-width: 1200px;
-  height: 100%;
-  background: var(--Mbg);
-  transition: .3s;
- /* border: 1px solid pink */
-}
-
-.zMenuF > *:nth-child(2) {/* Список меню */
-  width: 100%;
-  height: 100%;
-}
-.zMenuB {/* button icon (Открыть меню, ..) */
-  display: inline-flex;/* Выравнивает по центру button */
-}
-    /* ✦✦ ! header ✦✦ *//* #endregion */
-    
-    /* ✦✦ Лого ✦✦ *//* #region */
-.zMenuL {
-  /*min-width: min-content;*/
-  white-space: nowrap;
-  padding: 0 14px 0 7px;
-}
-.zMenuL a {
-  display: block;/* Для Первая буква всегда заглавная! */
-  cursor: pointer;
-  text-decoration: unset;
-  font-size: 1.2em;
-  font-weight: 700;
-  color: #fff!important;
-  background: linear-gradient(90deg, #0000, #8cf9 50%, #0000) 0 99%;
-  background-repeat: no-repeat;
-  background-size: 100% 1px;
-  text-shadow: 0 0 2px #000, 0 1px 7px #888;
-  transition: background .3s
-}
-.zMenuL a:hover {
-  background-size: 0 1px;
-}
-.zMenuL a::first-letter {/* Первая буква всегда заглавная! */
-  text-transform: uppercase;
-}
-    /* ✦✦ Лого ✦✦ *//* #endregion */
-
-    /* ✦✦ Список меню ✦✦ *//* #region */
-.zMenu nav {opacity: 0; pointer-events: none;
-  position: absolute;
-  top:50%;
-  width: 100%;
-  overflow: hidden;
-  transition: opacity .3s;
-  /* border: 1px solid blue; */
-}
-.zMenu:not(.zMenuX) nav {
-  transform: translate(0, -50%);
-}
-
-.zMenu:not(.zMenuX) nav > div {
-  float:right;
-  white-space: nowrap;
-}
-
-.zMenu nav a {
-  font-size: .8em;
-}
-.zMenu:not(.zMenuX) nav a {
-  margin: 0 7px;
-}
-.zMenu:not(.zMenuX) nav a.nM1 {/* + Нажатый a */
-  opacity: .3;
-}
-    /* ✦✦ Список меню ✦✦ *//* #endregion */
-
-    /* ✦✦ button ✦✦ *//* #region */
-.zMenuB button {
-  margin: 0 4px;
-}
-
-.zMenuB [class*="B-Ix-"] {/* Спрятать/Показать button Меню */
-  overflow: hidden;
-  transition: padding .7s, margin .7s, .3s;/* Убрать/Показать в js zMenu.pro */
-}
-    /* ✦✦ button ✦✦ *//* #endregion */
-
-    /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #region */
-.zMenuX nav > div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: fixed;
-  top: 1.5em;
-  right: -16em;
-  bottom: 0;
-  width: 15em;
-  max-width: 100vw;/* Не больше размера браузер окна */
-  overflow: hidden auto;
-  background: var(--Mbg);
-  transition: right .6s, width .6s;/* width Для font-size: 1.5em; */
-}
-
-        /* ✦✦✦ а Список ✦✦✦ *//* #region */
-.zMenuX nav a {
-  width: 100%;
-  padding: 3px 0 3px 1.1em;
-}
-.zMenuX nav a:not(:last-child) {
-  border-bottom: 1px solid;
-  border-image: linear-gradient(to right, #0000, var(--MCt), #0000) 1;/* Для белого #ddd */
-}
-.zMenuX nav :is(a:hover, a.nM1) {
-  --B-bg: #0b01 !important;/* background a */
-}
-
-.zMenuX nav a::after {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: .48em;
-  width: .25em;
-  height: .25em;
-  border-radius: 50%;
-  background: var(--MCt);
-}
-
-.zMenuX nav a:hover::after {
-  content: '';
-  transform: translateY(-50%) scale(0);
-  opacity: 0;
-  animation: MrSt .3s forwards
-}
-@keyframes MrSt {
-    50% {
-      opacity: 1;
-      transform: translateY(-50%) scale(1.5);
-    }
-    100% {
-      opacity: .6;
-      transform: translateY(-50%) scale(1)
-    }
-}
-.zMenuX nav a.nM1::after {/* Посветим .B-Ix-X кнопку раздела */
-  content: '';
-  background: var(--Mc1-1);
-}
-        /* ✦✦✦ а Список ✦✦✦ *//* #endregion */
-    /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #endregion */
-/* ✦ Меню ✦ *//* #endregion */
-
-/* ✦ .Obg Задний фон ✦ *//* #region */
-.Obg {z-index: 6; opacity: 0;
-    position:fixed;
-    top:0;
-    left:0;
-    width: 100%;
-    height: 100%;
-    background: #0006;
-    animation: a-Obg .5s ease-out forwards;
-    transition: height .3s;
-}
-@keyframes a-Obg {
-    to {
-        /* width: 100% */
-        opacity: 1;
-    }
-}
-/* ✦ .Obg Задний фон ✦ *//* #endregion */
-
 /* ✦ a, button (.B-L Загрузка...) ✦ *//* #region */
-/* + 
-  .B-L       - Добавит индикатор загрузки кнопки
-               • <button,a class="B-L" disabled>
-                 ° ::after
-                 
-  button::before - Для разного:
-                   • .B-I => Для выравнивания всех в 1 ряд, когда иконка без текста
-
+/* +
+  !  !  !  !  !  !  !  !  !  !  !
+  button::after  - click Отображение нажатия кнопки
+  .B-L  ::after  - Добавит индикатор загрузки кнопки
+                   • <button,a class="B-L" disabled>
+  button::before - .B-I => Для выравнивания всех в 1 ряд, когда иконка без текста
+  !  !  !  !  !  !  !  !  !  !  !
   .B-stop    - Блокировка всех кнопок (disabled)
                • <div class="B-stop">
                    <button></button>
@@ -252,13 +41,13 @@
   </button>
 */
     /* ✦✦ ! :hover/disabled/.B-L ✦✦ *//* #region */
-.zMenu :is(button, a) {
+.zMenu button, a {
   --B-C: #59f;/* Цвет */
   --B-I-C: var(--B-C);/* Свой цвет иконки <button style="--B-I-C: #fff" */
   display: inline-flex;
   align-items: center;/* Для выравнивания по Центру b */
   padding: 0 2px;
-  height: 1.4em;
+  /*height: 1.4em;*/
   font: inherit;
   /*font-size: 1em;*/
   color: var(--B-C);
@@ -268,7 +57,7 @@
   transition: .3s;
 }
 
-.zMenu :is(button, a):not([disabled]):hover :is(p,b),/* Затемнение при наведении мышки */
+.zMenu :is(button, a):not([disabled]):hover > *,/* :is(p,b) Затемнение при наведении мышки */
 
 .zMenu .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
 .zMenu :is(button, a):not(.B-L)[disabled] {/* disabled */
@@ -276,8 +65,9 @@
 }
 /* смартфоны, устройства с сенсорным экраном, с которым работают пальцами */
 @media (hover: none) and (pointer: coarse) {
-  .zMenu :is(button, a):not([disabled]):hover {/* Отжимает opacity.3 (На телефоне остаёдся гореть после нажатия) */
+  .zMenu :is(button, a):not([disabled]):hover > *{/* Отжимает opacity.3 (На телефоне остаёдся гореть после нажатия) */
     opacity: 1;
+    color: var(--B-C);
   }
 }
 
@@ -286,10 +76,19 @@
   /* cursor: default; */
   pointer-events: none;/* Убераем возможнасть нажать */
 }
-.zMenu :is(button, a).B-L :is(p, b) {/* Загрузка */
+.zMenu :is(button, a).B-L > * {/* :is(p,b) Загрузка */
   opacity: .6;
 }
     /* ✦✦ ! :hover/disabled/.B-L ✦✦ *//* #endregion */
+
+    /* ✦✦ b Текст ✦✦ *//* #region */
+.zMenu :is(button, a) > b {
+  display: block;/* Для выравнивания по Центру */
+  text-align: left;/* Полезно при переносе строки */
+ /* height: 0;*/
+  /*line-height: 0;*//* Помогает в линию */
+}
+    /* ✦✦ b Текст ✦✦ *//* #endregion */
 
     /* ✦✦ .B-L Загрузка... ✦✦ *//* #region */
         /* ✦✦✦ ! ✦✦✦ *//* #region */
@@ -309,7 +108,7 @@
   background: red;
   animation: B-vse 1.15s cubic-bezier(.45,.05,.55,.95) infinite;
 }
-@keyframes B-vse {/* поворот на 360 */
+@keyframes B-vse {/* Линия */
     50% {
       width: 100%;
     }
@@ -324,20 +123,20 @@
 
     /* ✦✦ click Отображение нажатия кнопки ✦✦ *//* #region */
         /* ✦✦✦ ! ✦✦✦ *//* #region */
-.zMenu :is(button, a):not([disabled]):active::before {z-index: -1;
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
- 
-    box-shadow: inset 0 0 3px #ef06;
-    outline: 1px solid #ef06;
+.zMenu :is(button, a):not([disabled]):active::after {z-index: 999;
+  content: '';
+  position: absolute;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
 
-    pointer-events: none;
-    animation: click_PL 1s
+  box-shadow: inset 0 0 3px #ef06;
+  outline: 1px solid #ef06;
+
+  pointer-events: none;
+  animation: click_PL 1s
 }
 @keyframes click_PL {
     20% {
@@ -380,6 +179,13 @@ button,a::before {
   transform: translate(0, -50%);*/
   width: 1em;
   height: 1em;
+}
+
+.zMenu [class*="B-I"] > b {
+  margin-left: 3px;
+}
+.zMenu [class*="B-I"] > b::first-letter {
+  text-transform: uppercase;
 }
     /* ✦✦ ! ✦✦ *//* #endregion */
 /* ✦ icon (Свои/google) ✦ *//* #endregion */
@@ -461,3 +267,211 @@ button,a::before {
 }
     /* ✦✦ Поиск .B-I-src ✦✦ *//* #endregion */
 /* ✦ button.B-I(x) p,s icon ✦ *//* #endregion */
+
+/* ✦ Меню ✦ *//* #region */
+    /* ✦✦ .tema(8-9) Расцветка ✦✦ *//* #region */
+/* • Для тёмного фона добавим class
+      в: <body class="tema9"
+   
+   По умолчанию белый фон!
+*/
+.temaT .zMenu2 {/* Тёмный */
+  --bg: #012;  /* background Фон сайта */
+  --Ct: #ccc;  /* color текст, Линия разделения, разделов мобил */
+  --c1-1: #afa;/* Кнопка нажата */
+}
+    /* ✦✦ .tema(8-9) Расцветка ✦✦ *//* #endregion */
+
+    /* ✦✦ ! header ✦✦ *//* #region */
+.zMenu {/* Для отступа */
+  height:2em;/* больше 1.5 Оставляет отступ с низу для текста в body */
+  font-size: 1rem;/* html */
+  @media (max-width: 768px) {/* до 768 */
+    font-size: 1.5em /* Увеличим для телефонов */
+  }
+  /*border: 1px solid red; */
+}
+    
+.zMenu2 {z-index: 7;
+  --Mbg: var(--bg, #fff);    /* background Фон сайта */
+  --MCt: var(--Ct, #000);    /*  */
+  --Mc1-1: var(--c1-1, #0b0);/* Кнопка нажата */
+  position: fixed;
+  top:0;
+  width: 100%;
+  height: 1.5em;
+  font: 500 1em Nunito;
+  box-shadow: 0 5px 9px -12px #000;
+  /* border: 1px solid red;*/
+}
+
+.zMenuF {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 0 auto;
+  padding:0 7px;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  background: var(--Mbg);
+  transition: .3s;
+ /* border: 1px solid pink */
+}
+
+.zMenuF > *:nth-child(2) {/* Список меню */
+  width: 100%;
+  height: 100%;
+}
+.zMenuB {/* button icon (Открыть меню, ..) */
+  display: inline-flex;/* Выравнивает по центру button */
+}
+    /* ✦✦ ! header ✦✦ *//* #endregion */
+    
+    /* ✦✦ Лого ✦✦ *//* #region */
+.zMenuL {
+  /*min-width: min-content;*/
+  white-space: nowrap;
+  padding: 0 14px 0 7px;
+}
+.zMenuL a {
+  --B-C: #fff;
+  font-size: 1.2em;
+  font-weight: 700;
+  /*color: #fff;*/
+  
+  background: linear-gradient(90deg, #0000, #8cf9 50%, #0000) 0 99%;
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  text-shadow: 0 0 2px #000, 0 1px 7px #888;
+}
+.zMenuL a:hover {
+  background-size: 0 1px;
+}
+.zMenuL a::first-letter {/* Первая буква всегда заглавная! */
+  text-transform: uppercase;
+}
+    /* ✦✦ Лого ✦✦ *//* #endregion */
+
+    /* ✦✦ Список меню ✦✦ *//* #region */
+.zMenu nav {opacity: 0; pointer-events: none;
+  position: absolute;
+  top:50%;
+  width: 100%;
+  overflow: hidden;
+  transition: opacity .3s;
+  /* border: 1px solid blue; */
+}
+.zMenu:not(.zMenuX) nav {
+  transform: translate(0, -50%);
+}
+
+.zMenu:not(.zMenuX) nav > div {
+  float:right;
+  white-space: nowrap;
+}
+
+.zMenu nav a {
+  font-size: .8em;
+}
+.zMenu:not(.zMenuX) nav a {
+  margin: 0 7px;
+}
+.zMenu:not(.zMenuX) nav a.nM1 {/* + Нажатый a */
+  opacity: .3;
+}
+    /* ✦✦ Список меню ✦✦ *//* #endregion */
+
+    /* ✦✦ button ✦✦ *//* #region */
+.zMenuB button {
+  margin: 0 4px;
+}
+
+.zMenuB [class*="B-Ix-"] {/* Спрятать/Показать button Меню */
+  overflow: hidden;
+  transition: padding .7s, margin .7s, .3s;/* Убрать/Показать в js zMenu.pro */
+}
+    /* ✦✦ button ✦✦ *//* #endregion */
+
+    /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #region */
+.zMenuX nav > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: fixed;
+  top: 1.5em;
+  right: -16em;
+  bottom: 0;
+  width: 15em;
+  max-width: 100vw;/* Не больше размера браузер окна */
+  overflow: hidden auto;
+  background: var(--Mbg);
+  transition: right .6s, width .6s;/* width Для font-size: 1.5em; */
+}
+
+        /* ✦✦✦ а Список ✦✦✦ *//* #region */
+.zMenuX nav a {
+  width: 100%;
+  padding: 3px 0 3px 1.1em;
+}
+.zMenuX nav a:not(:last-child) {
+  border-bottom: 1px solid;
+  border-image: linear-gradient(to right, #0000, var(--MCt), #0000) 1;/* Для белого #ddd */
+}
+.zMenuX nav :is(a:hover, a.nM1) {
+  --B-bg: #0b01 !important;/* background a */
+}
+
+.zMenuX nav a::before {/* Круг */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: .48em;
+  width: .25em;
+  height: .25em;
+  border-radius: 50%;
+  background: var(--MCt);
+}
+
+.zMenuX nav a:hover::before {
+  content: '';
+  transform: translateY(-50%) scale(0);
+  opacity: 0;
+  animation: MrSt .3s forwards
+}
+@keyframes MrSt {
+    50% {
+      opacity: 1;
+      transform: translateY(-50%) scale(1.5);
+    }
+    100% {
+      opacity: .6;
+      transform: translateY(-50%) scale(1)
+    }
+}
+.zMenuX nav a.nM1::before {/* Посветим .B-Ix-X кнопку раздела */
+  content: '';
+  background: var(--Mc1-1);
+}
+        /* ✦✦✦ а Список ✦✦✦ *//* #endregion */
+    /* ✦✦ Меню мобил (Невлезло по горизонту) ✦✦ *//* #endregion */
+/* ✦ Меню ✦ *//* #endregion */
+
+/* ✦ .Obg Задний фон ✦ *//* #region */
+.Obg {z-index: 6; opacity: 0;
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: #0006;
+    animation: a-Obg .5s ease-out forwards;
+    transition: height .3s;
+}
+@keyframes a-Obg {
+    to {
+        /* width: 100% */
+        opacity: 1;
+    }
+}
+/* ✦ .Obg Задний фон ✦ *//* #endregion */
