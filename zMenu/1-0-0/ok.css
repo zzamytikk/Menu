@@ -174,7 +174,7 @@ button,a::before {
   justify-content: center;
   align-items: center;
   position: absolute;
-  left: 0;
+  left: 1px;/* Когда иконка без текста (Для симетрии) */
   /*top: 50%;
   transform: translate(0, -50%);*/
   width: 1em;
