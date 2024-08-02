@@ -1,4 +1,4 @@
-<img src="/i.png">
+<img src="https://zam.usite.pro/_pu/0/74056753.jpg">
 Файлы: (css, js)<br>
  • m. (Сокращённые)<br>
  • ok. (Для редактирования)
