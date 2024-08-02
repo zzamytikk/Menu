@@ -269,7 +269,7 @@ button,a::before {
 /* ✦ button.B-I(x) p,s icon ✦ *//* #endregion */
 
 /* ✦ Меню ✦ *//* #region */
-    /* ✦✦ .tema(8-9) Расцветка ✦✦ *//* #region */
+    /* ✦✦ .temaT Для тёмного фона ✦✦ *//* #region */
 /* • Для тёмного фона добавим class
       в: <body class="temaT"
    
@@ -280,7 +280,7 @@ button,a::before {
   --Ct: #ccc;  /* color текст, Линия разделения, разделов мобил */
   --c1-1: #afa;/* Кнопка нажата */
 }
-    /* ✦✦ .tema(8-9) Расцветка ✦✦ *//* #endregion */
+    /* ✦✦ .temaT Для тёмного фона ✦✦ *//* #endregion */
 
     /* ✦✦ ! header ✦✦ *//* #region */
 .zMenu {/* Для отступа */
@@ -294,7 +294,7 @@ button,a::before {
     
 .zMenu2 {z-index: 7;
   --Mbg: var(--bg, #fff);    /* background Фон сайта */
-  --MCt: var(--Ct, #000);    /*  */
+  --MCt: var(--Ct, #000);    /* Круг, линия */
   --Mc1-1: var(--c1-1, #0b0);/* Кнопка нажата */
   position: fixed;
   top:0;
