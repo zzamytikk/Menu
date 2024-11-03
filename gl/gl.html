@@ -26,11 +26,7 @@
   <script src="/zMenu/1-0-0/ok.js" defer></script>
 </head>
   <body><div id="M"><div></div></div>
-  <style>
-    .zMenuL a::before {z-index: 99
-      
-    }
-  </style>
+  
   <header class="zMenu">
     <div class="zMenu2">
       <div class="zMenuF">
@@ -38,9 +34,9 @@
         <div>
           <nav>
             <div>
-              <a class="nM1" href="/">Главная</a>
-              <a href="/publ/">Каталог</a>
-              <a href="/gl/">Новости</a>
+              <a href="/" data-zurl="/publ/">Главная</a>
+              <a href="/gl/">Каталог</a>
+              <a href="/news/">Новости</a>
               <!--<a href="/news/">Новости</a>-->
               
               <!--
@@ -102,6 +98,7 @@
       </div>
     </div>
   </header>
+  
   
   <style>
     .menuBac {
@@ -194,7 +191,7 @@
     &nbsp; &nbsp; &nbsp; &lt;div>
     &nbsp; &nbsp; &nbsp; &nbsp; &lt;nav>
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div>&lt;!-- Список меню: -->
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;a class="nM1" href="/">Главная&lt;/a><!-- Для Главной страницы установить class="nM1" -->
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;a href="/" data-zurl="/glavnaja/">Главная&lt;/a><!-- data-zurl="..." Когда можно открыть 1 страницу 2-мя url -->
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;a href="/publ/">Каталог&lt;/a>
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;a href="/gl/">Новости&lt;/a>
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;a href="?r=file">Файлы&lt;/a>
@@ -225,7 +222,6 @@
     </code></pre>
     <!-- ••• Презентация КОНЕЦ ••• -->
   </main>
-  <footer></footer>
 
   <script>
     let e = document.querySelector('#hLoad');
