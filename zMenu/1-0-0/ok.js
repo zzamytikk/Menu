@@ -83,9 +83,18 @@ var zMenu = {//Меню
         return 1
       }
     },
-    /*  zMenu.f.bg({//✫ Добавим задний фон
+    //★ Добавим задний фон
+    /** gl.f.$({id:'',i:'',f:'',c:''});//Добавим задний фон
+     * 
+     *  @param  { string/$() } id - куда добавим. (.append(..);)
+     *  @param  { string }     i  - id Для удаления заднего фона. zMenu.f.bg('string');
+     *  @param  { string }     f  - ()=>{} Сработает при нажатие на задний фон
+     *  @param  { array }      c  - css Заднего фона
+     *
+     * - - - -
+      gl.f.bg({//✫ Добавим задний фон
         id: 'string/event',     //* $() куда добавим. (.append(..);)
-        i: 'string',            //* id Для удаления zMenu.f.bg('string');
+        i: 'string',            //* id Для удаления заднего фона. gl.f.bg('string');
         f: 'function',          //* ()=>{} Сработает при нажатие на задний фон
 
         c:{                     //* css Заднего фона
@@ -95,14 +104,18 @@ var zMenu = {//Меню
         }
       });
 
-      zMenu.f.bg('string');//† Закрыть задний фон
-    */
+      gl.f.bg('string');//† Закрыть задний фон
+     */ 
     bg: q => {
       if (q.id) {
         let i = 'bg-' + q.i;
 
-        $(q.id).append($('<div id="' + i + '" class="Obg">').css(q.c || {}));
-        $('#'+i).click(q.f);
+        $(q.id).append($('<div id="' + i + '" class="Obg">')
+          .css(q.c || {}));
+        
+        if(typeof q.f == 'function') {//Вешаем click на задний фон
+          $('#'+i).click(q.f);
+        }
       } else {//† Закрыть задний фон
         $('#bg-' + q).css({ height: 0, opacity: 0 });//Анимация закрытия
 
