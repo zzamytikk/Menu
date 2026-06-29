@@ -109,6 +109,8 @@ var zMenu = {//Меню
     bg: q => {
       if (q.id) {
         let i = 'bg-' + q.i;
+        
+        $('body').css('overflow', 'hidden');//Уберём прокрутку
 
         $(q.id).append($('<div id="' + i + '" class="Obg">')
           .css(q.c || {}));
@@ -118,7 +120,8 @@ var zMenu = {//Меню
         }
       } else {//† Закрыть задний фон
         $('#bg-' + q).css({ height: 0, opacity: 0 });//Анимация закрытия
-
+        $('body').css('overflow', '');//Вернём прокрутку
+        
         setTimeout(() => {
           $('#bg-' + q).remove();//Удаляем задний фон
         }, 300);
