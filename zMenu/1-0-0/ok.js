@@ -153,26 +153,27 @@ var zMenu = {//Меню
       O = zMenu;
     */
     url: O => {//Подсветим <a
-      let I, a=$(O.id+' nav>div a'),
+      let I,
         u = top.location,
         U=decodeURI(u.pathname + u.search);//Полный путь (Без домена) /elda.html?r=1&x=5 || ''
 
       /* 
-        p: decodeURI(a.pathname + a.search + a.hash),  //• Полный путь (Без домена) /elda.html?r=1&x=5#truljalja || ''
+        p: decodeURI(u.pathname + u.search + u.hash),  //• Полный путь (Без домена) /elda.html?r=1&x=5#truljalja || ''
 
-        H: decodeURI(a.pathname),                      //• Путь к странице /elda.html || ''
-        s: decodeURI(a.search),                        //• Переменные ?r=1&x=5 || ''
-        h: decodeURI(a.hash)                           //• #truljalja || ''
+        H: decodeURI(u.pathname),                      //• Путь к странице /elda.html || ''
+        s: decodeURI(u.search),                        //• Переменные ?r=1&x=5 || ''
+        h: decodeURI(u.hash)                           //• #truljalja || ''
       */
-      a.filter('.nM1').removeClass('nM1');
-      a.each((i, e) => {//Перебераем <a
+      
+      $(O.id+' nav > div a').each((i, e) => {//Перебераем <a
         i = $(e).attr('href');//url1
         I = $(e).attr('data-zurl');//url2 для проверки
         //console.debug('if(i['+i+'] && ((i['+i+'] == "/" && U['+U+'] == "/") || (U.length['+U.length+'] > 1 && ['+U+']U.indexOf(i['+i+'])['+U.indexOf(i)+'] > -1))) => '+(i && ((i == '/' && U == '/') || (i.length>1 && U.indexOf(i) > -1))));
         if((i && U && ((i == '/' && U == '/') || (i.length>1 && U.length>1 && U.indexOf(i) > -1)))//url1
         || (I && U && ((I == '/' && U == '/') || (I.length>1 && U.length>1 && U.indexOf(I) > -1)))//url2 <a data-zurl="..."
         ) {//Не пусто && Совпало
-          $(e).addClass('nM1');
+          $(O.id+' nav > div .nM1').removeClass('nM1');/* Удалить предыдущий */
+          $(e).addClass('nM1');/* Ставим новый раздел */
           return false//Остановим
         }
       });
