@@ -35,8 +35,9 @@
   </button>
 */
     /* ✦✦ ! :hover/disabled/.B-L ✦✦ *//* #region */
-.zMenuB > :is(button, a) {
-  --B-C: #59f;/* Цвет */
+.zMenuB > :is(button, a),
+:is(.zMenuL, .zMenuF nav) a {
+  --B-C: var(--B-Cm, #59f);/* Цвет */
   --B-I-C: var(--B-C);/* Свой цвет иконки <button style="--B-I-C: #fff" */
   display: inline-flex;
   align-items: center;/* Для выравнивания по Центру b */
@@ -49,32 +50,56 @@
   transition: .3s;
 }
 
-.zMenuB > :is(button, a):not([disabled]):hover > *,/* :is(p,b) Затемнение при наведении мышки */
+:is(
+  .zMenuB > :is(button, a),
+  :is(.zMenuL, .zMenuF nav) a
+):not([disabled]):hover > *,/* :is(p,b) Затемнение при наведении мышки */
 
-.zMenuB > .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
-.zMenuB > :is(button, a):not(.B-L)[disabled] {/* disabled */
+.B-stop :is(
+  .zMenuB > :is(button, a),
+  :is(.zMenuL, .zMenuF nav) a
+):not(.B-L, [disabled]),/* .B-stop (disabled) */
+:is(
+  .zMenuB > :is(button, a),
+  :is(.zMenuL, .zMenuF nav) a
+):not(.B-L)[disabled] {/* disabled */
   opacity: .3;
 }
 /* смартфоны, устройства с сенсорным экраном, с которым работают пальцами */
 @media (hover: none) and (pointer: coarse) {
-  .zMenuB > :is(button, a):not([disabled]):hover > *{/* Отжимает opacity.3 (На телефоне остаёдся гореть после нажатия) */
+  :is(
+    .zMenuB > :is(button, a),
+    :is(.zMenuL, .zMenuF nav) a
+  ):not([disabled]):hover > *{/* Отжимает opacity.3 (На телефоне остаёдся гореть после нажатия) */
     opacity: 1;
     color: var(--B-C);
   }
 }
 
-.zMenuB > .B-stop :is(button, a):not(.B-L, [disabled]),/* .B-stop (disabled) */
-.zMenuB > :is(button, a)[disabled] {/* disabled/Загрузка */
+.B-stop :is(
+  .zMenuB > :is(button, a),
+  :is(.zMenuL, .zMenuF nav)
+):not(.B-L, [disabled]),/* .B-stop (disabled) */
+:is(
+  .zMenuB > :is(button, a),
+  :is(.zMenuL, .zMenuF nav) a
+)[disabled] {/* disabled/Загрузка */
   /* cursor: default; */
   pointer-events: none;/* Убераем возможнасть нажать */
 }
-.zMenuB > :is(button, a).B-L > * {/* :is(p,b) Загрузка */
+:is(
+  .zMenuB > :is(button, a),
+  :is(.zMenuL, .zMenuF nav) a
+).B-L > * {/* :is(p,b) Загрузка */
   opacity: .6;
 }
     /* ✦✦ ! :hover/disabled/.B-L ✦✦ *//* #endregion */
 
     /* ✦✦ b Текст ✦✦ *//* #region */
-.zMenuB > :is(button, a) > b {
+:is(
+  .zMenuB > :is(button, a),
+  :is(.zMenuL, .zMenuF nav) a
+) > b {
   display: block;/* Для выравнивания по Центру */
   text-align: left;/* Полезно при переносе строки */
  /* height: 0;*/
@@ -85,14 +110,14 @@
     /* ✦✦ .B-L Загрузка... ✦✦ *//* #region */
         /* ✦✦✦ ! ✦✦✦ *//* #region */
 /*.B-L[disabled]::before,*/
-.zMenuB > .B-L[disabled]::after {z-index: 1;
+.zMenu > .B-L[disabled]::after {z-index: 1;
   content: '';
   position: absolute;
 }
         /* ✦✦✦ ! ✦✦✦ *//* #endregion */
 
         /* ✦✦✦ Для всех ✦✦✦ *//* #endregion */
-.zMenuB > .B-L::after {
+.zMenu > .B-L::after {
   left: 0;
   bottom:0;
   width: 0;
@@ -115,7 +140,10 @@
 
     /* ✦✦ click Отображение нажатия кнопки ✦✦ *//* #region */
         /* ✦✦✦ ! ✦✦✦ *//* #region */
-.zMenuB > :is(button, a):not([disabled]):active::after {z-index: 999;
+:is(
+  .zMenuB > :is(button, a),
+  :is(.zMenuL, .zMenuF nav) a
+):not([disabled]):active::after {z-index: 999;
   content: '';
   position: absolute;
   left: 0;
@@ -304,7 +332,7 @@
   padding: 0 14px 0 7px;
 }
 .zMenuL a {
-  --B-C: #fff;
+  --B-Cm: #fff;
   font-size: 1.2em;
   font-weight: 700;
   background: linear-gradient(90deg, #0000, #8cf9 50%, #0000) 0 99%;
