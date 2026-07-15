@@ -5,6 +5,10 @@
 
 .zMenu, .zMenu *, .zMenu *::after, .zMenu *::before {/* Помогает интеграции */
   position: relative;
+  margin:0;
+  padding:0;
+  border: 0;
+  outline: 0;
   box-sizing: border-box;
   line-height: 1.1;
   font-size: inherit;
@@ -66,13 +70,14 @@
   opacity: .3;
 }
 /* смартфоны, устройства с сенсорным экраном, с которым работают пальцами */
-@media (hover: none) and (pointer: coarse) {
+@media (hover: none) and (pointer: coarse) {/* смартфоны, устройства с сенсорным экраном */
   :is(
     .zMenuB > :is(button, a),
     :is(.zMenuL, .zMenuF nav) a
-  ):not([disabled]):hover > *{/* Отжимает opacity.3 (На телефоне остаёдся гореть после нажатия) */
-    opacity: 1;
-    color: var(--B-C);
+  ):not([disabled]):hover > * {
+    opacity: 1;/* Отжимает opacity.3 (Когда на телефоне остаёдся гореть после нажатия) */
+    color: var(--B-C);/* Вернём цвет */
+    cursor: default; /* Уберёт на телефоне поивление мерцание click (Прозрачный квадрат) */
   }
 }
 
@@ -144,24 +149,19 @@
   .zMenuB > :is(button, a),
   :is(.zMenuL, .zMenuF nav) a
 ):not([disabled]):active::after {z-index: 999;
-  content: '';
+  content: ""; /* Для отключения unset */
   position: absolute;
   left: 0;
   top:0;
   width: 100%;
   height: 100%;
-  border-radius: 4px;
-
-  box-shadow: inset 0 0 3px #ef06;
-  outline: 1px solid #ef06;
-
+  border-radius: inherit;
   pointer-events: none;
   animation: click_PL 1s forwards
 }
 @keyframes click_PL {
     20% {
-      box-shadow: inset 0 0 5px 5px #ef06;
-      outline-width: 7px;
+      box-shadow: inset 0 0 5px 5px #ef03;
     }
     100% {
       opacity:0;
