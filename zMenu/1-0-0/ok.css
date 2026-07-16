@@ -49,6 +49,7 @@
   font: inherit;
   color: var(--B-I-C);
   background: #0000;
+  border-radius: 3px;/* click Отображение нажатия кнопки */
   cursor: pointer;
   text-decoration: unset;
   transition: .3s;
